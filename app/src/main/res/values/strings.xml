@@ -1,0 +1,151 @@
+<resources>
+    <!-- Web Services: Distriluz - Inicio -->
+
+    <string name="app_name">TireAPP</string>
+    <string name="app_footer">GARKET - Perú 2016</string>
+    <string name="leftpadd">25dp</string>
+    <string name="demotext">Demo exclusiva para SEGURITEC 2016</string>
+    <!-- Web Services: Distriluz - Fin -->
+
+    <!-- Web Services: Gescom - Inicio -->
+    <!--
+    <string name="app_name">SSC</string>
+    <string name="title_activity_main_acsion">SSC</string>
+    <string name="app_footer">SSC v1.5.21 - Perú 2016</string>
+    -->
+    <!-- Web Services: Gescom - Fin -->
+
+
+    <array name="modelos">
+        <item>BMW</item>
+        <item>Mercedes Benz</item>
+        <item>Toyota</item>
+    </array>
+
+    <string name="action_settings">Opciones</string>
+    <string name="action_eliminar">Eliminar Finalizadas Enviadas</string>
+    <string name="action_eliminarFinalizadasPendientes">Eliminar Finalizadas No Enviadas</string>
+    <string name="action_eliminarPendiente">Eliminar Pendientes</string>
+    <string name="action_enviarFinalizados">Enviar Finalizadas</string>
+    <string name="action_EnviarFinalizadosFotos">Enviar Fotos de Finalizadas</string>
+
+    <string name="label_Ingresar">INGRESAR</string>
+    <string name="label_contrasena">Contraseña</string>
+    <string name="label_usuario">Usuario</string>
+    <string name="dsclogo">Logo de la Empresa</string>
+
+    <string name="dscGescom">GESCOM</string>
+    <string name="dscUsuario">Usuario</string>
+
+    <string name="labelPendiente">Pendiente</string>
+    <string name="labelFinalizadas">Finalizadas</string>
+
+    <string name="optSincro">SINCRONIZAR</string>
+    <string name="optSalir">SALIR</string>
+
+    <string name="titActivades">Actividades</string>
+
+    <string name="lblDNI">25447475</string>
+    <string name="lblSeparador">|</string>
+    <string name="lblSector">CHICLAYO 05</string>
+    <string name="lblDireccion">UPIS CRUZ DEL PERDON CA EMILIANO NIÑO 0550 0000</string>
+    <string name="lblCliente">UPIS CRUZ DEL PERDON CA EMILIANO NIÑO 0550 0000</string>
+    <string name="lblDescripcion">LLACSAHUACHE ELENOS</string>
+    <string name="lblSuministro">0000000000000015383970</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="busqueda">Buscar</string>
+
+    <string name="dscIconOptSincro">Icono de sincronizar</string>
+    <string name="dscFotoACSION">Foto de usuario</string>
+
+    <string name="sincronizarIntervenciones">Sincronizando reglas de negocio.</string>
+    <string name="sincronizarIntervenciones_Fin">Reglas de negocio actualizadas.</string>
+    <string name="sincronizarOts">Sincronizando OTs.</string>
+    <string name="sincronizarOts_ConfirmaSincronizacion">Confirmando sincronización de OTs.</string>
+    <string name="sincronizarOts_ConfirmaInSync">Sincronizando recursos para las OTs.</string>
+    <string name="sincronizarOts_NoData">No encontramos nuevas OTs para ti.</string>
+    <string name="sincronizarOts_Fin">Sincronización de OTs correcta.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="labelNombre">Nombre</string>
+    <string name="labelDescripcion">Descripción</string>
+    <string name="LabelBtnGrabar">Grabar</string>
+    <string name="LabelBtnCancelar">Cancelar</string>
+    <string name="LabelBtnAgregar">Agregar</string>
+    <string name="TituloActividad">Actividad</string>
+    <string name="dscImagenEsfera">Imagen de seleccion</string>
+    <string name="tituloSector">TituloSector</string>
+    <string name="cabecera_item">25447475 | CHICLAYO 05</string>
+    <string name="labelTextDireccion"> La Cabaña del Tio Sam</string>
+    <string name="lblTextMedidor">000000311-073711</string>
+    <string name="dscDropValue">indicador_drop</string>
+    <string name="Si">New RadioButton</string>
+    <string name="No">New RadioButton</string>
+    <string name="LblMedidor">Medidor:</string>
+    <string name="LblOT">OT:</string>
+    <string name="LblNumeroOrden">New Text</string>
+    <string name="LblNombreCliente">New Text</string>
+    <string name="LblNombreIntervencion">New Text</string>
+    <string name="LblEstadoOrden">New Text</string>
+    <string name="LabelBtnCamino">En Camino</string>
+    <string name="LblEjecutando">Ejecutando</string>
+
+    <string name="no_location_detected">
+        No se detectó ubicación. Asegúrese de que su GPS está activado en el dispositivo.
+    </string>
+    <string name="location_updated_message">Ubicación actualizada</string>
+    <string name="cantTotalSector">New Text</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="txtBusqueda">New Text</string>
+    <string name="DscImgBtnBus">Imagen busqueda</string>
+    <string name="ImgBtnRefrescar">imagen de boton para refrescar la lista</string>
+    <string name="descBtnEliminar">descBtnEliminar</string>
+
+    <!-- Web Services: Distriluz - Inicio -->
+    <!--
+    <string name="url_usuario_login">http://oficinavirtual.distriluz.com.pe:62000/wsactcomlinea/ServicioExternoActividadesComerciales.svc/descargo/validaraccesowcf</string>
+    <string name="url_usuario_update_id_registration_android_acl">http://hidrandina.distriluz.com.pe:62000/api/usuario/update_id_registration_android_acl</string>
+    <string name="url_intervencion_registro_estado_save">http://oficinavirtual.distriluz.com.pe:62000/wsactcomlinea/ServicioExternoActividadesComerciales.svc/descargo/registrarestadoocurrenciacorterxwcf</string>
+    <string name="url_formulario_ms_get_all_form_last_version_by_usuario">http://hidrandina.distriluz.com.pe:62000/api/formulario/ms_get_all_form_last_version_by_usuario</string>
+    -->
+    <!-- Web Services: Distriluz - Fin -->
+
+    <!-- Web Services: Distriluz Produccion - Inicio -->
+
+    <string name="url_usuario_login">http://oficinavirtual.distriluz.com.pe:62150/wsactividadescomerciales/ServicioExternoActividadesComerciales.svc/descargo/validaraccesowcf</string>
+    <string name="url_usuario_update_id_registration_android_acl">http://hidrandina.distriluz.com.pe:65000/api/usuario/update_id_registration_android_acl</string>
+    <string name="url_intervencion_registro_estado_save">http://oficinavirtual.distriluz.com.pe:62150/wsactividadescomerciales/ServicioExternoActividadesComerciales.svc/descargo/registrarestadoocurrenciacorterxwcf</string>
+    <string name="url_formulario_ms_get_all_form_last_version_by_usuario">http://hidrandina.distriluz.com.pe:65000/api/formulario/ms_get_all_form_last_version_by_usuario</string>
+
+
+    <!-- Web Services: Distriluz - Fin -->
+
+    <!-- Web Services: Gescom - Inicio -->
+    <!--
+    <string name="url_usuario_login">http://ti.gescom.com.pe/acsion/api/usuario/login</string>
+    <string name="url_usuario_update_id_registration_android_acl">http://ti.gescom.com.pe/acsion/api/usuario/update_id_registration_android_acl</string>
+    <string name="url_intervencion_registro_estado_save">http://ti.gescom.com.pe/acsion/api/intervencion_registro_estado/save</string>
+    <string name="url_formulario_ms_get_all_form_last_version_by_usuario">http://ti.gescom.com.pe/acsion/api/formulario/ms_get_all_form_last_version_by_usuario</string>
+    -->
+    <!-- Web Services: Gescom - Fin -->
+
+    <string name="DscBotonMapa">boton de mapa</string>
+    <string name="BtnGeolocalizacion">Imagen de la geolocalización</string>
+    <string name="label">New Text</string>
+    <string name="google_app_id">385116660712</string>
+    <string name="cambioLista">cambiarLista</string>
+    <string name="lbl_indicadores_kpi">Indicadores KPI</string>
+
+    <string name="senderid">385116660712</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+</resources>

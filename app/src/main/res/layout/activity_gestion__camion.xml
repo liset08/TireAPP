@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/negroTabletas"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.pepe.tireapp.Gestion_Camion"
+    android:verticalScrollbarPosition="right">
+
+   <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/HeaderIngreso"
+        android:background="@color/appreparto2"
+        android:padding="8.0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:textSize="20.0sp"
+            android:textColor="#ffffffff"
+            android:layout_gravity="center"
+            android:id="@+id/TextHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gestión Camiones"
+            android:textSize="25dp"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/blanco"
+            android:layout_marginLeft="15dp"
+            android:layout_span="2"
+            android:layout_centerHorizontal="true" />
+
+    </LinearLayout>
+
+    <TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="100dp" >
+
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/leftpadd"
+            android:textSize="15dp"
+            android:textColor="@color/blanco"
+            android:paddingRight="70dp"
+            android:text="Placa:"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:textSize="15dp"
+            android:id="@+id/Placa"
+            />
+
+     </TableRow>
+
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/leftpadd"
+            android:textColor="@color/blanco"
+            android:textSize="15dp"
+            android:text="Modelo:"/>
+
+        <Spinner
+            android:scrollbarSize="150dp"
+            android:id="@+id/Modelo"
+            >
+        </Spinner>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/leftpadd"
+            android:textSize="15dp"
+            android:textColor="@color/blanco"
+            android:text="Marca:"/>
+
+        <EditText
+            android:layout_width="179dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:id="@+id/Marca"
+            />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/leftpadd"
+            android:textSize="15dp"
+            android:textColor="@color/blanco"
+            android:text="Nº de Ejes:"/>
+
+        <EditText
+            android:layout_width="179dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/Ejes"
+            android:textColor="@color/blanco"
+            />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/leftpadd"
+            android:textSize="15dp"
+            android:textColor="@color/blanco"
+            android:text="Nº Llantas:"/>
+
+        <EditText
+            android:layout_width="179dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/Llantas"
+            android:textColor="@color/blanco"
+            />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:layout_marginLeft="@dimen/leftpadd"
+            android:textSize="15dp"
+            android:text="Carga Util:"/>
+
+        <EditText
+            android:layout_width="179dp"
+            android:textColor="@color/blanco"
+            android:layout_height="wrap_content"
+            android:id="@+id/CargaUtil"
+            />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/leftpadd"
+            android:textSize="15dp"
+            android:textColor="@color/blanco"
+            android:text="Carga Neta:"/>
+
+        <EditText
+            android:layout_width="179dp"
+            android:textColor="@color/blanco"
+            android:layout_height="wrap_content"
+            android:id="@+id/CargaNeta"
+            />
+    </TableRow>
+
+</TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp">
+
+        <TableRow>
+        <Button
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="Guardar"
+
+            />
+
+        <Button
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:onClick="Salir" />
+
+        </TableRow>
+    </TableLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/Footer"
+        android:background="@color/grey_400"
+        android:padding="8.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:layout_alignParentBottom="true">
+
+        <TextView android:textSize="20.0sp"
+            android:textColor="#ffffffff"
+            android:layout_gravity="center"
+            android:id="@+id/TextFooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_footer" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

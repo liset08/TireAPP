@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="abs__background_holo_dark">#ff000000</color>
+    <color name="abs__background_holo_light">#fff3f3f3</color>
+    <item type="color" name="abs__bright_foreground_holo_dark">@color/abs__background_holo_light</item>
+    <item type="color" name="abs__bright_foreground_holo_light">@color/abs__background_holo_dark</item>
+    <color name="abs__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
+    <color name="abs__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="celeste">#ff3498db</color>
+    <color name="letra">#ff666666</color>
+    <color name="blanco">#ffffffff</color>
+    <color name="turquoise">#ff1abc9c</color>
+    <color name="carrot">#ffe67e22</color>
+    <color name="asbestos">#ff7f8c8d</color>
+    <color name="sun">#fff1c40f</color>
+    <color name="midnight_blue">#2c3e50</color>
+    <color name="emerald">#2ecc71</color>
+    <color name="negro">#000000</color>
+    <color name="azarin">#e74c3c</color>
+    <color name="amarillo">#f4e84a</color>
+
+    <color name="deep_orange_5">#ff5722</color>
+    <color name="deep_orange_4">#ff7043</color>
+    <color name="deep_orange_3">#ff8a65</color>
+
+    <color name="blue_50">#E3F2FD</color>
+    <color name="blue_100">#bbdefb</color>
+    <color name="blue_200">#90caf9</color>
+    <color name="blue_300">#64b5f6</color>
+    <color name="blue_800">#1565c0</color>
+    <color name="blue_6">#1e88e5</color>
+
+    <color name="green_50">#E8F5E9</color>
+    <color name="green_700">#388E3C</color>
+    <color name="green_9">#1b5e20</color>
+
+
+    <color name="grey_50">#FAFAFA</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_400">#BDBDBD</color>
+
+    <color name="appreparto1">#141314</color>
+    <color name="appreparto2">#373737</color>
+    <color name="appreparto4">#18508F</color>
+    <color name="appreparto5">#1583B9</color>
+    <color name="appreparto6">#1583B9</color>
+    <color name="appreparto7">#FDFCF8</color>
+    <color name="celesteTabletas">#5cacdf</color>
+    <color name="negro2_tabletas">#283138</color>
+    <color name="gris2tabletas">#f7f7f7</color>
+    <color name="negroTabletas">#17242a</color>
+    <color name="gris3tabletas">#d2d9df</color>
+    <color name="pendientetabletas">#842C35</color>
+    <color name="finalizadotabletas">#174977</color>
+    <color name="tabpendiendetabletas">#963338</color>
+    <color name="tabfinalizadastabletas">#174977</color>
+
+
+</resources>

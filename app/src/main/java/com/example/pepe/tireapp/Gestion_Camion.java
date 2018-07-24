@@ -17,32 +17,7 @@ public class Gestion_Camion extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion__camion);
-        Spinner spinner = (Spinner)findViewById(R.id.Modelo);
-        spinner.setOnItemSelectedListener(this);
-        List<String> categories = new ArrayList<String>();
 
-        categories.add("Faw");
-        categories.add("Ford");
-        categories.add("Foton");
-        categories.add("Hyundai");
-        categories.add("Isuzu");
-        categories.add("Iveco");
-        categories.add("Jac");
-        categories.add("Jmc");
-        categories.add("Mercedes-benz");
-        categories.add("Renault");
-        categories.add("Scania");
-        categories.add("Volkswagen");
-        categories.add("Volvo");
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
     }
 
     public void Salir (View paramView){

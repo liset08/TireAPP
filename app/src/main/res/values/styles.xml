@@ -3,8 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Habilitar la Toolbar -->
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/abs__background_holo_dark</item>
+        <item name="colorPrimaryDark">@color/abs__background_holo_dark</item>
+        <item name="colorAccent">@color/abs__background_holo_dark</item>
 
         <!--...-->
     </style>

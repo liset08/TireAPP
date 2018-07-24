@@ -1,0 +1,48 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group_nav_main"
+        android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="Inicio" />
+
+        <item
+            android:id="@+id/man_camion"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="Mantenimiento de Camion" />
+
+        <item
+            android:id="@+id/intro_medidas"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="Introducir Medidas" />
+
+        <item
+            android:id="@+id/cambio_y_rota"
+            android:icon="@android:drawable/ic_menu_mapmode"
+            android:title="Cambio y Rotacion" />
+
+        <item
+            android:id="@+id/auditoria"
+            android:icon="@android:drawable/ic_menu_mapmode"
+            android:title="Auditoria" />
+
+    </group>
+
+    <group
+        android:id="@+id/group_nav_system"
+        android:checkableBehavior="single">
+
+
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="Salir" />
+
+    </group>
+
+</menu>

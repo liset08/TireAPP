@@ -4,6 +4,7 @@ package com.example.pepe.tireapp.Service;
 
 import com.example.pepe.tireapp.ResponseMessage;
 import com.example.pepe.tireapp.model.Grupoempresa;
+import com.example.pepe.tireapp.model.TipoNeumatico;
 
 import java.util.List;
 
@@ -41,5 +42,12 @@ public interface ApiService {
     @DELETE("/api/product/delete/{id}")
     Call<Void> delete(@Query("id") int id);
 
+    //neumaticos
+
+    @GET("/api/neumatico/buscar")
+    Call<List<TipoNeumatico>> getNeum();
+
+    @POST("/api/neumatico/create")
+    Call<Void> createNeumatico(@Body TipoNeumatico tipoNeumatico);
 
 }

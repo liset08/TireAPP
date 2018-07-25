@@ -27,24 +27,11 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <AutoCompleteTextView
-            android:id="@+id/userEmail"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
-            android:background="@drawable/rounded_white"
-            android:drawableLeft="@drawable/ic_user_icon"
-            android:drawablePadding="5dp"
-            android:hint="Codigo"
-            android:paddingStart="10dp"
-            android:textSize="14sp" />
 
         <AutoCompleteTextView
-            android:id="@+id/userPassword"
+            android:id="@+id/txtdot"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
@@ -52,7 +39,7 @@
             android:drawableLeft="@drawable/ic_pass_icon"
             android:drawablePadding="5dp"
             android:hint="DOT"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
@@ -69,10 +56,10 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <AutoCompleteTextView
-                    android:id="@+id/userCPassword"
+                <Spinner
+                    android:id="@+id/marcaSpinner"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="15dp"
@@ -83,8 +70,7 @@
                     android:inputType="textPassword"
                     android:paddingStart="10dp"
                     android:textSize="14sp"
-
-                    />
+                     />
             </LinearLayout>
 
             <LinearLayout
@@ -93,11 +79,11 @@
                 android:layout_gravity="left"
                 android:layout_weight="1"
                 android:orientation="horizontal">
+                <Spinner
+                    android:id="@+id/modeloSpinner"
 
-                <AutoCompleteTextView
-                    android:id="@+id/userCPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/rounded_white"
@@ -106,8 +92,8 @@
                     android:hint="Modelo"
                     android:inputType="textPassword"
                     android:textSize="14sp"
-
                     />
+
             </LinearLayout>
 
 
@@ -126,17 +112,16 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/userCPassword"
+                    android:id="@+id/txt_ancho"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="15dp"
                     android:background="@drawable/rounded_white"
-                    android:drawableLeft="@drawable/ic_confirm_icon"
                     android:drawablePadding="5dp"
                     android:hint="Ancho"
-                    android:inputType="textPassword"
+                    android:inputType="number"
                     android:paddingStart="10dp"
                     android:textSize="14sp"
 
@@ -151,16 +136,15 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/userCPassword"
+                    android:id="@+id/txt_radial"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/rounded_white"
-                    android:drawableLeft="@drawable/ic_confirm_icon"
                     android:drawablePadding="5dp"
                     android:hint="Radial   "
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:textSize="14sp"
 
                     />
@@ -172,51 +156,48 @@
 
 
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/txt_carga"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/rounded_white"
-            android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
             android:hint="Indice de Carga"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
             />
 
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/txtAltura"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/rounded_white"
-            android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
             android:hint="Altura de cocada"
-            android:inputType="textPassword"
+            android:inputType="numberDecimal"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
             />
 
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/txt_temper"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/rounded_white"
-            android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
             android:hint="Temperatura"
-            android:inputType="textPassword"
+            android:inputType="numberDecimal"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
@@ -234,17 +215,16 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/userCPassword"
+                    android:id="@+id/txtpresionma"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="15dp"
                     android:background="@drawable/rounded_white"
-                    android:drawableLeft="@drawable/ic_confirm_icon"
                     android:drawablePadding="5dp"
                     android:hint="Presion max."
-                    android:inputType="textPassword"
+                    android:inputType="numberDecimal"
                     android:paddingStart="10dp"
                     android:textSize="14sp"
 
@@ -259,16 +239,15 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/userCPassword"
+                    android:id="@+id/txtpresionmi"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/rounded_white"
-                    android:drawableLeft="@drawable/ic_confirm_icon"
                     android:drawablePadding="5dp"
                     android:hint="Presion min."
-                    android:inputType="textPassword"
+                    android:inputType="numberDecimal"
                     android:textSize="14sp"
 
                     />
@@ -278,17 +257,16 @@
         </LinearLayout>
 
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/txt_precio"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/rounded_white"
-            android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
             android:hint="Costo de Neumatico"
-            android:inputType="textPassword"
+            android:inputType="numberDecimal"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
@@ -312,6 +290,8 @@
                 android:layout_marginBottom="36dp"
                 android:layout_marginEnd="25dp"
                 android:layout_marginStart="15dp"
+                android:id="@+id/btn_addneumatico"
+                android:onClick="callRegisterNeumatico"
                 android:layout_marginTop="20dp"
                 android:background="@color/cardview_dark_background"
                 android:paddingLeft="10dp"

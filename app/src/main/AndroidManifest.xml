@@ -33,19 +33,21 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".MenuPrincipal"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".Gestion_Camion" />
-        <activity android:name=".GestionNeumatico" />
-        <activity android:name=".ControLLantasActivity" />
-        <activity android:name=".ListaCamionActivity">
-
-        </activity>
-        <activity android:name=".AddActivity">
+        <activity android:name=".Activities.GestionNeumatico">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ControLLantasActivity" />
+        <activity android:name=".Activities.ListaCamionActivity"></activity>
+        <activity android:name=".AddActivity"></activity>
+        <activity android:name=".Activities.NeumaticoListActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
         </activity>
     </application>
 

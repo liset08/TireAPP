@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.pepe.tireapp.Activities.GestionNeumatico;
+import com.example.pepe.tireapp.Activities.NeumaticoListActivity;
 
 public class MenuPrincipal extends AppCompatActivity {
 
@@ -88,7 +89,7 @@ public class MenuPrincipal extends AppCompatActivity {
     }
 
     public void GestionLlanta(View paramView){
-        Intent intent = new Intent(this, GestionNeumatico.class);
+        Intent intent = new Intent(this, NeumaticoListActivity.class);
         startActivity(intent);
 
     }

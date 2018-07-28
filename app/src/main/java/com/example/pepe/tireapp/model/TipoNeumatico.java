@@ -1,65 +1,19 @@
 package com.example.pepe.tireapp.model;
 
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
 
 /**
  * Created by LISET on 23/07/2018.
  */
 
-public class TipoNeumatico {
+public class TipoNeumatico implements Parcelable {
 
+    public TipoNeumatico() {
 
-    private String dot;
-    private String fecmod;
-    private String usumod;
-    private String fecreg;
-    private String usureg;
-    private String estado;
-    private double presion_max;
-    private double presion_min;
-    private double precio;
-    private double temperatura;
-    private int desgaste;
-    private String indice_velocidad;
-    private String indice_carga;
-    private double altura_min;
-    private double altura_max;
-    private String radial;
-    private String perfil;
-    private int ancho;
-    private String modelo;
-
-    @Override
-    public String toString() {
-        return "TipoNeumatico{" +
-                "dot='" + dot + '\'' +
-                ", fecmod='" + fecmod + '\'' +
-                ", usumod='" + usumod + '\'' +
-                ", fecreg='" + fecreg + '\'' +
-                ", usureg='" + usureg + '\'' +
-                ", estado='" + estado + '\'' +
-                ", presion_max=" + presion_max +
-                ", presion_min=" + presion_min +
-                ", precio=" + precio +
-                ", temperatura=" + temperatura +
-                ", desgaste=" + desgaste +
-                ", indice_velocidad='" + indice_velocidad + '\'' +
-                ", indice_carga='" + indice_carga + '\'' +
-                ", altura_min=" + altura_min +
-                ", altura_max=" + altura_max +
-                ", radial='" + radial + '\'' +
-                ", perfil='" + perfil + '\'' +
-                ", ancho=" + ancho +
-                ", modelo='" + modelo + '\'' +
-                ", marca='" + marca + '\'' +
-                ", empresa_id=" + empresa_id +
-                ", tipo_neumatico_ID=" + tipo_neumatico_ID +
-                '}';
     }
-
-    private String marca;
-    private int empresa_id;
-    private int tipo_neumatico_ID;
 
     public String getDot() {
         return dot;
@@ -236,6 +190,131 @@ public class TipoNeumatico {
     public void setTipo_neumatico_ID(int tipo_neumatico_ID) {
         this.tipo_neumatico_ID = tipo_neumatico_ID;
     }
+
+    private String dot;
+
+    private String fecmod;
+    private String usumod;
+    private String fecreg;
+    private String usureg;
+    private String estado;
+    private double presion_max;
+    private double presion_min;
+    private double precio;
+    private double temperatura;
+    private int desgaste;
+    private String indice_velocidad;
+    private String indice_carga;
+    private double altura_min;
+    private double altura_max;
+    private String radial;
+    private String perfil;
+    private int ancho;
+    private String modelo;
+
+    private String marca;
+    private int empresa_id;
+    private int tipo_neumatico_ID;
+    public TipoNeumatico(Parcel in) {
+        dot = in.readString();
+        fecmod = in.readString();
+        usumod = in.readString();
+        fecreg = in.readString();
+        usureg = in.readString();
+        estado = in.readString();
+        presion_max = in.readDouble();
+        presion_min = in.readDouble();
+        precio = in.readDouble();
+        temperatura = in.readDouble();
+        desgaste = in.readInt();
+        indice_velocidad = in.readString();
+        indice_carga = in.readString();
+        altura_min = in.readDouble();
+        altura_max = in.readDouble();
+        radial = in.readString();
+        perfil = in.readString();
+        ancho = in.readInt();
+        modelo = in.readString();
+        marca = in.readString();
+        empresa_id = in.readInt();
+        tipo_neumatico_ID = in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(dot);
+        dest.writeString(fecmod);
+        dest.writeString(usumod);
+        dest.writeString(fecreg);
+        dest.writeString(usureg);
+        dest.writeString(estado);
+        dest.writeDouble(presion_max);
+        dest.writeDouble(presion_min);
+        dest.writeDouble(precio);
+        dest.writeDouble(temperatura);
+        dest.writeInt(desgaste);
+        dest.writeString(indice_velocidad);
+        dest.writeString(indice_carga);
+        dest.writeDouble(altura_min);
+        dest.writeDouble(altura_max);
+        dest.writeString(radial);
+        dest.writeString(perfil);
+        dest.writeInt(ancho);
+        dest.writeString(modelo);
+        dest.writeString(marca);
+        dest.writeInt(empresa_id);
+        dest.writeInt(tipo_neumatico_ID);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<TipoNeumatico> CREATOR = new Parcelable.Creator<TipoNeumatico>() {
+        @Override
+        public TipoNeumatico createFromParcel(Parcel in) {
+            return new TipoNeumatico(in);
+        }
+
+        @Override
+        public TipoNeumatico[] newArray(int size) {
+            return new TipoNeumatico[size];
+        }
+    };
+
+
+    @Override
+    public String toString() {
+        return "TipoNeumatico{" +
+                "dot='" + dot + '\'' +
+                ", fecmod='" + fecmod + '\'' +
+                ", usumod='" + usumod + '\'' +
+                ", fecreg='" + fecreg + '\'' +
+                ", usureg='" + usureg + '\'' +
+                ", estado='" + estado + '\'' +
+                ", presion_max=" + presion_max +
+                ", presion_min=" + presion_min +
+                ", precio=" + precio +
+                ", temperatura=" + temperatura +
+                ", desgaste=" + desgaste +
+                ", indice_velocidad='" + indice_velocidad + '\'' +
+                ", indice_carga='" + indice_carga + '\'' +
+                ", altura_min=" + altura_min +
+                ", altura_max=" + altura_max +
+                ", radial='" + radial + '\'' +
+                ", perfil='" + perfil + '\'' +
+                ", ancho=" + ancho +
+                ", modelo='" + modelo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", empresa_id=" + empresa_id +
+                ", tipo_neumatico_ID=" + tipo_neumatico_ID +
+                '}';
+    }
+
+
+
 
 
 }

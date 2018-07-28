@@ -92,6 +92,7 @@ public class GestionNeumatico extends AppCompatActivity   {
         try {
 
             TipoNeumatico tipoNeumatico=new TipoNeumatico();
+
             tipoNeumatico.setDot(txt_dot.getText().toString());
             tipoNeumatico.setAncho(Integer.parseInt(txt_ancho.getText().toString()));
             tipoNeumatico.setRadial(txt_radial.getText().toString());
@@ -135,5 +136,6 @@ public class GestionNeumatico extends AppCompatActivity   {
         }
 
 
-    }}
+    }
 
+   }

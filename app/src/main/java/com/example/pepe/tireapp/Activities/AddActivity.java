@@ -1,4 +1,4 @@
-package com.example.pepe.tireapp;
+package com.example.pepe.tireapp.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pepe.tireapp.Activities.ListaCamionActivity;
+import com.example.pepe.tireapp.R;
 import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
 import com.example.pepe.tireapp.model.Grupoempresa;
@@ -55,7 +55,7 @@ public class AddActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) {
                         if (response.isSuccessful()){
-                            Intent intent=new Intent(AddActivity.this,ListaCamionActivity.class);
+                            Intent intent=new Intent(AddActivity.this,NeumaticoListActivity.class);
                             startActivity(intent);
                         }
                     }
@@ -67,7 +67,7 @@ public class AddActivity extends AppCompatActivity {
                     }
                 });
                 startActivityForResult(new Intent(this,
-                        ListaCamionActivity.class), REGISTER_FORM_REQUEST);
+                        NeumaticoListActivity.class), REGISTER_FORM_REQUEST);
 
             }catch (Exception e) {
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();

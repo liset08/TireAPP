@@ -1,10 +1,12 @@
 package com.example.pepe.tireapp.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.pepe.tireapp.R;
@@ -23,7 +25,7 @@ import retrofit2.Response;
 
 public class NeumaticoListActivity extends AppCompatActivity {
 
-    private static final String TAG = ListaCamionActivity.class.getSimpleName();
+    private static final String TAG = NeumaticoListActivity.class.getSimpleName();
     private RecyclerView neumaticoList;
 
 
@@ -35,7 +37,7 @@ public class NeumaticoListActivity extends AppCompatActivity {
         neumaticoList = findViewById(R.id.recyclerview);
         neumaticoList.setLayoutManager(new LinearLayoutManager(this));
 
-        neumaticoList.setAdapter(new NeumaticoListAdapter());
+        neumaticoList.setAdapter(new NeumaticoListAdapter(this));
 
         initialize();
 
@@ -89,5 +91,9 @@ public class NeumaticoListActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void showRegisterdenuncia(View view){
+        startActivityForResult(new Intent(this, GestionNeumatico.class), 100);
     }
 }

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/abs__background_holo_dark"
@@ -8,18 +7,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:paddingTop="30dp"
+
 
         android:background="@color/amarillo"
         android:orientation="vertical">
 
 
 
+
         <AutoCompleteTextView
-            android:id="@+id/txtdot"
+            android:id="@+id/txtdot_e"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginBottom="10dp"
@@ -47,7 +49,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/marcaSpinner"
+                    android:id="@+id/marcaSpinner_e"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
@@ -60,7 +62,7 @@
                     android:inputType="textPassword"
                     android:paddingStart="10dp"
                     android:textSize="14sp"
-                     />
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -70,7 +72,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <Spinner
-                    android:id="@+id/modeloSpinner"
+                    android:id="@+id/modeloSpinner_e"
 
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -102,7 +104,7 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/txt_ancho"
+                    android:id="@+id/txt_ancho_e"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
@@ -126,7 +128,7 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/txt_radial"
+                    android:id="@+id/txt_radial_e"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
@@ -146,7 +148,7 @@
 
 
         <AutoCompleteTextView
-            android:id="@+id/txt_carga"
+            android:id="@+id/txt_carga_e"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginBottom="10dp"
@@ -162,7 +164,7 @@
             />
 
         <AutoCompleteTextView
-            android:id="@+id/txtAltura"
+            android:id="@+id/txtAltura_e"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginBottom="10dp"
@@ -178,7 +180,7 @@
             />
 
         <AutoCompleteTextView
-            android:id="@+id/txt_temper"
+            android:id="@+id/txt_temper_e"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginBottom="10dp"
@@ -205,7 +207,7 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/txtpresionma"
+                    android:id="@+id/txtpresionma_e"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
@@ -229,7 +231,7 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/txtpresionmi"
+                    android:id="@+id/txtpresionmi_e"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
@@ -247,7 +249,7 @@
         </LinearLayout>
 
         <AutoCompleteTextView
-            android:id="@+id/txt_precio"
+            android:id="@+id/txt_precio_e"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginBottom="10dp"
@@ -280,17 +282,16 @@
                 android:layout_marginBottom="36dp"
                 android:layout_marginEnd="25dp"
                 android:layout_marginStart="15dp"
-                android:id="@+id/btn_addneumatico"
-                android:onClick="callRegisterNeumatico"
+                android:id="@+id/btn_editneumatico"
+                android:onClick="callEditNeumatico"
                 android:layout_marginTop="20dp"
                 android:background="@color/cardview_dark_background"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Agregar"
+                android:text="Guardar"
                 android:textColor="@color/abs__background_holo_light"
                 android:textSize="14sp"
                 android:textStyle="normal" />
-
 
 
             <Button
@@ -298,7 +299,6 @@
                 android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:layout_marginBottom="36dp"
-
                 android:layout_marginTop="20dp"
                 android:background="@color/cardview_dark_background"
                 android:paddingLeft="10dp"

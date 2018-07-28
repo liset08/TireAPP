@@ -42,12 +42,15 @@ public interface ApiService {
     @DELETE("/api/product/delete/{id}")
     Call<Void> delete(@Query("id") int id);
 
-    //neumaticos
+    //Mantenimiento de neumaticos
 
     @GET("/api/neumatico/buscar")
     Call<List<TipoNeumatico>> getNeum();
 
     @POST("/api/neumatico/create")
     Call<Void> createNeumatico(@Body TipoNeumatico tipoNeumatico);
+
+    @PUT("/api/neumatico/update")
+    Call<Void> update(@Body TipoNeumatico tipoNeumatico);
 
 }

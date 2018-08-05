@@ -105,8 +105,14 @@ public class EditarNeumaticoActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
+
+    }
+    public void CancelEdit(View paramView){
+        Intent intent = new Intent(this, NeumaticoListActivity.class);
+        startActivity(intent);
+
+    }
    }
 
 

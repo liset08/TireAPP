@@ -138,4 +138,9 @@ public class GestionNeumatico extends AppCompatActivity   {
 
     }
 
+    public void CancelAdd(View paramView){
+        Intent intent = new Intent(this, NeumaticoListActivity.class);
+        startActivity(intent);
+
+    }
    }

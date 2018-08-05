@@ -303,6 +303,7 @@
                 android:background="@color/cardview_dark_background"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:onClick="CancelAdd"
                 android:text="Cancelar"
                 android:textColor="@color/abs__background_holo_light"
                 android:textStyle="normal" />

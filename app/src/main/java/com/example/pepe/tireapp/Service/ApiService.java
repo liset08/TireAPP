@@ -39,8 +39,6 @@ public interface ApiService {
     @PUT("/api/product/update")
     Call<Void> update(@Body Grupoempresa garupoempresa);
 
-    @DELETE("/api/product/delete/{id}")
-    Call<Void> delete(@Query("id") int id);
 
     //Mantenimiento de neumaticos
 
@@ -52,5 +50,6 @@ public interface ApiService {
 
     @PUT("/api/neumatico/update")
     Call<Void> update(@Body TipoNeumatico tipoNeumatico);
-
+    @DELETE("/api/neumatico/delete/{id}")
+    Call<Void> delete(@Path("id") int id);
 }

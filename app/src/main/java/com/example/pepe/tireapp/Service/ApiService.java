@@ -3,6 +3,7 @@ package com.example.pepe.tireapp.Service;
 
 
 import com.example.pepe.tireapp.ResponseMessage;
+import com.example.pepe.tireapp.model.Camion;
 import com.example.pepe.tireapp.model.Grupoempresa;
 import com.example.pepe.tireapp.model.TipoNeumatico;
 
@@ -52,4 +53,16 @@ public interface ApiService {
     Call<Void> update(@Body TipoNeumatico tipoNeumatico);
     @DELETE("/api/neumatico/delete/{id}")
     Call<Void> delete(@Path("id") int id);
+
+
+    //Mantenimiento de camion
+    @POST("/api/camion/create")
+    Call<Void> create(@Body Camion camion);
+
+    @GET("/api/camion/getByPlaca/{placa}")
+    Call<Camion> findCamion(@Path("placa") String placa);
+
+
+    @GET("/api/camion/getAll")
+    Call<List<Camion>> getCamiones();
 }

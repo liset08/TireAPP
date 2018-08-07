@@ -304,6 +304,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="Cancelar"
+                android:onClick="CancelEdit"
                 android:textColor="@color/abs__background_holo_light"
                 android:textStyle="normal" />
         </LinearLayout>

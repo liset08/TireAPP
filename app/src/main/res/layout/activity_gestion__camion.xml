@@ -33,7 +33,7 @@
             android:textStyle="bold" />
 
         <AutoCompleteTextView
-            android:id="@+id/userEmail"
+            android:id="@+id/editTextTag"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
@@ -42,8 +42,9 @@
             android:background="@drawable/rounded_white"
             android:drawableLeft="@drawable/ic_user_icon"
             android:drawablePadding="5dp"
-            android:hint="Codigo"
+            android:hint="Tag"
             android:paddingStart="10dp"
+            android:inputType="text"
             android:textSize="14sp" />
 
 
@@ -60,7 +61,7 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/userCPassword"
+                    android:id="@+id/editTextMarca"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginBottom="10dp"
@@ -70,7 +71,7 @@
                     android:drawableLeft="@drawable/ic_confirm_icon"
                     android:drawablePadding="5dp"
                     android:hint="Marca"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:paddingStart="10dp"
                     android:textSize="14sp"
 
@@ -85,7 +86,7 @@
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/userCPassword"
+                    android:id="@+id/editTextModelo"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginBottom="10dp"
@@ -94,7 +95,7 @@
                     android:drawableLeft="@drawable/ic_confirm_icon"
                     android:drawablePadding="5dp"
                     android:hint="Modelo"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:textSize="14sp"
 
                     />
@@ -107,7 +108,7 @@
 
 
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/editTextKilometraje"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
@@ -116,15 +117,15 @@
             android:background="@drawable/rounded_white"
             android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
-            android:hint="Nro. de serie"
-            android:inputType="textPassword"
+            android:hint="Kilometraje"
+            android:inputType="numberDecimal"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
             />
 
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/editTextPlaca"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
@@ -134,14 +135,14 @@
             android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
             android:hint="Placa"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
             />
 
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/editTextNEjes"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
@@ -151,7 +152,7 @@
             android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
             android:hint="Nro. de ejes"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
@@ -159,7 +160,7 @@
 
 
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/editTextPNeto"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
@@ -169,13 +170,13 @@
             android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
             android:hint="Peso Neto"
-            android:inputType="textPassword"
+            android:inputType="numberDecimal"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
             />
         <AutoCompleteTextView
-            android:id="@+id/userCPassword"
+            android:id="@+id/editTextPBruto"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
@@ -185,7 +186,7 @@
             android:drawableLeft="@drawable/ic_confirm_icon"
             android:drawablePadding="5dp"
             android:hint="Peso Bruto"
-            android:inputType="textPassword"
+            android:inputType="numberDecimal"
             android:paddingStart="10dp"
             android:textSize="14sp"
 
@@ -201,6 +202,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/buttomAgregar"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="left"

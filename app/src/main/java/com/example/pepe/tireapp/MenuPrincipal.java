@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.pepe.tireapp.Activities.GestionNeumatico;
+import com.example.pepe.tireapp.Activities.MenuCamionActivity;
 import com.example.pepe.tireapp.Activities.NeumaticoListActivity;
 
 public class MenuPrincipal extends AppCompatActivity {
@@ -83,7 +84,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     public void GestionCamion(View paramView){
 
-        Intent intent = new Intent(this, Gestion_Camion.class);
+        Intent intent = new Intent(this, MenuCamionActivity.class);
         startActivity(intent);
 
     }

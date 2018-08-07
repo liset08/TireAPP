@@ -1,46 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_marginStart="16dp"
-android:layout_marginEnd="16dp"
-android:layout_marginTop="8dp"
-android:layout_marginBottom="8dp"
-android:focusable="true"
-android:clickable="true"
-android:foreground="?android:attr/selectableItemBackground">
-
-<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/cardview_light_background"
-
     android:layout_height="wrap_content"
-    android:padding="16dp" >
+    android:layout_marginStart="13dp"
+    android:layout_marginEnd="13dp"
+    android:background="@color/blanco"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:focusable="true"
+    android:elevation="20dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
-
-
-    <TextView
-        android:id="@+id/namempresa_text"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="nombreEmpresa"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:background="@color/blanco"
+        android:layout_gravity="center_vertical"
+        android:radius="150dp"
 
-    <TextView
-        android:id="@+id/estado_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/namempresa_text"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="estado"
-        android:textColor="@color/negro"
-        android:textSize="14sp" />
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/img_camion"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="17dp"
+            android:foregroundGravity="center"
+
+            app:srcCompat="@drawable/img_camion_7ej"/>
 
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/placaCamionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/img_camion"
+            android:gravity="center"
+            android:text="Placa"
+            android:textAlignment="textStart"
+            android:textColor="@color/appreparto1"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/marcaCamionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/placaCamionText"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Marca"
+            android:layout_toEndOf="@+id/img_camion"
+
+            android:textColor="@color/negro"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/modeloCamionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/marcaCamionText"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Modelo"
+            android:layout_toEndOf="@+id/img_camion"
+            android:textColor="@color/negro"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/btnEditCamion"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/modeloCamionText"
+            android:background="@drawable/bg_ripple"
+            android:gravity="center"
+            android:text="Editar"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textAlignment="center"
+            android:textColor="@color/blanco" />
+
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

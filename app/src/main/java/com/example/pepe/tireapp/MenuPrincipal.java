@@ -9,12 +9,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.pepe.tireapp.Activities.GestionNeumatico;
+import com.example.pepe.tireapp.Activities.MenuAuditoriaActivity;
 import com.example.pepe.tireapp.Activities.MenuCamionActivity;
 import com.example.pepe.tireapp.Activities.NeumaticoListActivity;
+import com.example.pepe.tireapp.model.Usuario;
+import com.example.pepe.tireapp.repositories.UsuarioRepository;
 
 public class MenuPrincipal extends AppCompatActivity {
+
 
 
     private DrawerLayout drawerLayout;
@@ -23,6 +28,27 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
+        boolean usuariologeado = UsuarioRepository.verifyLogeo();
+
+
+
+       if(!usuariologeado){
+           Usuario user = UsuarioRepository.getUsuario();
+           Toast.makeText(this,"Eres la ostia " + user.getApellido() ,Toast.LENGTH_LONG).show();
+           inicializate();
+       }else{
+           Intent intent = new Intent(this,MainActivityIngreso.class);
+           startActivity(intent);
+           finish();
+       }
+
+
+
+
+    }
+
+
+    private void inicializate(){
         // Set DrawerLayout
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -60,11 +86,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 return true;
             }
         });
-
-
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -102,10 +124,17 @@ public class MenuPrincipal extends AppCompatActivity {
 
     public void Salir(View paramView){
 
+
+        Intent intent = new Intent(MenuPrincipal.this , MainActivityIngreso.class);
+        UsuarioRepository.logout();
         finish();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
+    }
+
+    public void GestionAuditoria(View view){
+        Intent intent = new Intent(this, MenuAuditoriaActivity.class);
+        intent.putExtra("tipogestion" , "auditor");
         startActivity(intent);
     }
 

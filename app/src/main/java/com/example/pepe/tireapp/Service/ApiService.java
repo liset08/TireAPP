@@ -70,5 +70,5 @@ public interface ApiService {
 
 
     @POST("/api/usuario/login")
-    Call<Usuario> login(@Body Login login);
+    Call<List<Usuario>> login(@Body Login login);
 }

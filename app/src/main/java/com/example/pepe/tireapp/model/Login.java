@@ -7,7 +7,7 @@ package com.example.pepe.tireapp.model;
 public class Login {
 
     private String username;
-    private String password;
+    private String pass;
 
     public String getUsername() {
         return username;
@@ -17,11 +17,11 @@ public class Login {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }

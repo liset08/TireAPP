@@ -15,6 +15,9 @@ import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
 import com.example.pepe.tireapp.model.Login;
 import com.example.pepe.tireapp.model.Usuario;
+import com.example.pepe.tireapp.repositories.UsuarioRepository;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,12 +37,12 @@ public class MainActivityIngreso extends AppCompatActivity {
 
         EditText editTextUsuario = (EditText) findViewById(R.id.editTextUsuario);
         EditText editTextPass = (EditText) findViewById(R.id.editTextPass);
-        String pass = editTextPass.getText().toString().trim();
-        String usuariodsc = editTextUsuario.getText().toString().trim();
+        String pass = editTextPass.getText().toString();
+        String usuariodsc = editTextUsuario.getText().toString();
 
         Login login = new Login();
         login.setUsername(usuariodsc);
-        login.setPassword(pass);
+        login.setPass(pass);
 
             if(pass.equals("") || usuariodsc.equals(""))
                 Toast.makeText(this,"Por favor rellene los campos requeridos",Toast.LENGTH_SHORT).show();
@@ -47,22 +50,24 @@ public class MainActivityIngreso extends AppCompatActivity {
 
                 ApiService api = ApiServiceGenerator.createService(ApiService.class);
 
-                Call<Usuario> call = api.login(login);
+                Call<List<Usuario>> call = api.login(login);
 
-                call.enqueue(new Callback<Usuario>() {
+                call.enqueue(new Callback<List<Usuario>>() {
                     @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                    public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                         try{
                             int statusCode = response.code();
                             Log.d(TAG, "HTTP status code: " + statusCode);
 
                             if(response.isSuccessful()){
-                                Usuario user = response.body();
+                                Usuario user = response.body().get(0);
                                 //Agrego los datos a la cache del celular con SUGAR ORM
+                                UsuarioRepository.create(user);
+                                Toast.makeText(MainActivityIngreso.this, "Bienvenido " + user.getNombre(),Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(MainActivityIngreso.this, MenuPrincipal.class);
                                 startActivity(intent);
-
                                 MainActivityIngreso.this.finish();
+
                             }else{
                                 Log.e(TAG, "onError: " + response.errorBody().string());
                                 throw new Exception("Error en el servicio");
@@ -70,13 +75,13 @@ public class MainActivityIngreso extends AppCompatActivity {
                         }catch (Throwable t){
                             try {
                                 Log.e(TAG, "onThrowable: " + t.toString(), t);
-                                Toast.makeText(MainActivityIngreso.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivityIngreso.this, "Usuario y/o contraseña incorrecta", Toast.LENGTH_LONG).show();
                             }catch (Throwable x){}
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
+                    public void onFailure(Call<List<Usuario>> call, Throwable t) {
                         Log.e(TAG, "onFailure: " + t.toString());
                         Toast.makeText(MainActivityIngreso.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }

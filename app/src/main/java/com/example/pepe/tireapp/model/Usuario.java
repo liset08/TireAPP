@@ -1,9 +1,12 @@
 package com.example.pepe.tireapp.model;
 
+import com.orm.dsl.Table;
+
 /**
  * Created by JORDAN on 8/08/2018.
  */
 
+@Table
 public class Usuario {
     public Integer usuarioID;
     public Integer grupoEmpresa_ID;

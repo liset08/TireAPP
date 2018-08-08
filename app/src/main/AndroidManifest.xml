@@ -23,11 +23,25 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="DATABASE"
+            android:value="tireapp.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example.pepe.tireapp.model" />
+
         <activity
             android:name=".MainActivityIngreso"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -54,7 +68,8 @@
             android:name=".Activities.EditarNeumaticoActivity"
             android:label="Editar Neumatico" />
         <activity android:name=".Activities.MenuCamionActivity" />
-        <activity android:name=".Activities.InfCamionActivity"></activity>
+        <activity android:name=".Activities.InfCamionActivity" />
+        <activity android:name=".Activities.MenuAuditoriaActivity"></activity>
     </application>
 
 </manifest>

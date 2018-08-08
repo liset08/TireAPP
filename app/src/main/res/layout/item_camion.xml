@@ -80,7 +80,7 @@
             android:layout_below="@+id/modeloCamionText"
             android:background="@drawable/bg_ripple"
             android:gravity="center"
-            android:text="Editar"
+            android:text="neumáticos"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:textAlignment="center"

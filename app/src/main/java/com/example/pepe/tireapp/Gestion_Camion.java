@@ -1,5 +1,6 @@
 package com.example.pepe.tireapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.pepe.tireapp.Activities.MenuCamionActivity;
 import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
 import com.example.pepe.tireapp.model.Camion;
@@ -50,7 +52,10 @@ public class Gestion_Camion extends AppCompatActivity implements AdapterView.OnI
                 call.enqueue(new Callback() {
                     @Override
                     public void onResponse(Call call, Response response) {
-                        Toast.makeText(Gestion_Camion.this,"creado", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Gestion_Camion.this,"REGISTRO EXITOSO", Toast.LENGTH_LONG).show();
+                        finish();
+                        Intent intent = new Intent(Gestion_Camion.this, MenuCamionActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override

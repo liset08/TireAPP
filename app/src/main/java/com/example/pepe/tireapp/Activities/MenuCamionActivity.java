@@ -21,6 +21,7 @@ import com.example.pepe.tireapp.adapters.CamionListAdpater;
 import com.example.pepe.tireapp.model.Camion;
 
 
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -126,7 +127,8 @@ public class MenuCamionActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
 
                         List<Camion> camiones = response.body();
-                        Log.d(TAG, "productos: " + camiones);
+                        Log.d(TAG, "camiones: " + camiones);
+                        Collections.reverse(camiones);
 
                         CamionListAdpater adapter = (CamionListAdpater) camionList.getAdapter();
                         adapter.setCamiones(camiones);

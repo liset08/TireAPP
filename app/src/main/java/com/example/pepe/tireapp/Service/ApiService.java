@@ -5,7 +5,9 @@ package com.example.pepe.tireapp.Service;
 import com.example.pepe.tireapp.ResponseMessage;
 import com.example.pepe.tireapp.model.Camion;
 import com.example.pepe.tireapp.model.Grupoempresa;
+import com.example.pepe.tireapp.model.Login;
 import com.example.pepe.tireapp.model.TipoNeumatico;
+import com.example.pepe.tireapp.model.Usuario;
 
 import java.util.List;
 
@@ -65,4 +67,8 @@ public interface ApiService {
 
     @GET("/api/camion/getAll")
     Call<List<Camion>> getCamiones();
+
+
+    @POST("/api/usuario/login")
+    Call<Usuario> login(@Body Login login);
 }

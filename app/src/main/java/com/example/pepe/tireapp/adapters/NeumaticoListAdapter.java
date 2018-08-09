@@ -118,7 +118,7 @@ try {
         public void onClick(DialogInterface dialog, int which) {
             ApiService service = ApiServiceGenerator.createService(ApiService.class);
 
-            Call<Void> call = service.delete(tipoNeumatico.getTipo_neumatico_ID());
+            Call<Void> call = service.delete(tipoNeumatico.getNeumatico_id());
 
             call.enqueue(new Callback() {
                 @Override

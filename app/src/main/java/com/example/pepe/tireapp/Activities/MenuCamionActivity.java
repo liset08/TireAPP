@@ -77,12 +77,15 @@ public class MenuCamionActivity extends AppCompatActivity {
                     Log.d(TAG, "HTTP status code: " + statusCode);
                     //Toast.makeText(MenuCamionActivity.this, statusCode, Toast.LENGTH_SHORT).show();
                     if (response.isSuccessful()) {
+                        int idPlaca = response.body().getCamion_ID();
 
                         String placa = response.body().getPlaca();
                         int ejes = response.body().getEjes();
                         Intent intent = new Intent(MenuCamionActivity.this, InfCamionActivity.class);
                         intent.putExtra("placa",  placa);
                         intent.putExtra("ejes" , ejes);
+                        intent.putExtra("idPlaca" , idPlaca);
+
                         startActivity(intent);
 
                     } else {

@@ -15,7 +15,6 @@ public class UsuarioRepository {
         SugarRecord.save(user);
 
     }
-
     public static Usuario getUsuario(){
         Usuario usuario = SugarRecord.listAll(Usuario.class).get(0);
         return usuario;

@@ -1,5 +1,6 @@
 package com.example.pepe.tireapp.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,8 +30,11 @@ public class InfCamionActivity extends AppCompatActivity {
 
         textViewPlaca = findViewById(R.id.textViewPlaca);
 
-        String placa = getIntent().getExtras().getString("placa");
+        final String placa = getIntent().getExtras().getString("placa");
         int ejes = getIntent().getExtras().getInt("ejes");
+       final int idPlaca = getIntent().getExtras().getInt("idPlaca");
+
+
         textViewPlaca.setText(placa);
 
         LinearLayout llBotonera1 = (LinearLayout) findViewById(R.id.llBotonera1);
@@ -93,6 +97,14 @@ public class InfCamionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(InfCamionActivity.this,"A" + String.valueOf(s),Toast.LENGTH_SHORT).show();
+                        String pos="A"+String.valueOf(s);
+                        Intent intent = new Intent(InfCamionActivity.this, LecturaActivity.class);
+                        intent.putExtra("placa",  placa);
+                        intent.putExtra("idPlaca" , idPlaca);
+                        intent.putExtra("posicion" , pos);
+
+
+                        startActivity(intent);
                     }
                 });
                 llBotonera1.addView(button);
@@ -125,6 +137,13 @@ public class InfCamionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(InfCamionActivity.this,"B" + String.valueOf(s),Toast.LENGTH_SHORT).show();
+                        String pos="B"+String.valueOf(s);
+                        Intent intent = new Intent(InfCamionActivity.this, LecturaActivity.class);
+                        intent.putExtra("placa",  placa);
+                        intent.putExtra("idPlaca" , idPlaca);
+                        intent.putExtra("posicion" , pos);
+                        startActivity(intent);
+
                     }
                 });
                 llBotonera2.addView(button);
@@ -157,6 +176,13 @@ public class InfCamionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(InfCamionActivity.this,"C" + String.valueOf(s),Toast.LENGTH_SHORT).show();
+                        String pos="C"+String.valueOf(s);
+                        Intent intent = new Intent(InfCamionActivity.this, LecturaActivity.class);
+                        intent.putExtra("placa",  placa);
+                        intent.putExtra("idPlaca" , idPlaca);
+                        intent.putExtra("posicion" , pos);
+                        startActivity(intent);
+
                     }
                 });
                 llBotonera3.addView(button);
@@ -183,6 +209,13 @@ public class InfCamionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(InfCamionActivity.this,"D" + String.valueOf(s),Toast.LENGTH_SHORT).show();
+                        String pos="D"+String.valueOf(s);
+                        Intent intent = new Intent(InfCamionActivity.this, LecturaActivity.class);
+                        intent.putExtra("placa",  placa);
+                        intent.putExtra("idPlaca" , idPlaca);
+                        intent.putExtra("posicion" , pos);
+                        startActivity(intent);
+
                     }
                 });
                 llBotonera4.addView(button);

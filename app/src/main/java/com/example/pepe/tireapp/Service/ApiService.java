@@ -5,6 +5,7 @@ package com.example.pepe.tireapp.Service;
 import com.example.pepe.tireapp.ResponseMessage;
 import com.example.pepe.tireapp.model.Camion;
 import com.example.pepe.tireapp.model.Grupoempresa;
+import com.example.pepe.tireapp.model.Lectura;
 import com.example.pepe.tireapp.model.Login;
 import com.example.pepe.tireapp.model.TipoNeumatico;
 import com.example.pepe.tireapp.model.Usuario;
@@ -45,16 +46,21 @@ public interface ApiService {
 
     //Mantenimiento de neumaticos
 
-    @GET("/api/neumatico/buscar")
+    @GET("/api/neu/find")
     Call<List<TipoNeumatico>> getNeum();
 
-    @POST("/api/neumatico/create")
+    @POST("/api/neu/create")
     Call<Void> createNeumatico(@Body TipoNeumatico tipoNeumatico);
 
-    @PUT("/api/neumatico/update")
+    @PUT("/api/neu/update")
     Call<Void> update(@Body TipoNeumatico tipoNeumatico);
-    @DELETE("/api/neumatico/delete/{id}")
+    @DELETE("/api/neu/delete/{id}")
     Call<Void> delete(@Path("id") int id);
+
+
+    //
+    @POST("/api/lectura/create")
+    Call<Void> createLectur(@Body Lectura lectura);
 
 
     //Mantenimiento de camion

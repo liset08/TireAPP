@@ -34,7 +34,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
        if(!usuariologeado){
            Usuario user = UsuarioRepository.getUsuario();
-           Toast.makeText(this,"Eres la ostia " + user.getApellido() ,Toast.LENGTH_LONG).show();
+           Toast.makeText(this,"Quien te conoce " + user.getApellido() ,Toast.LENGTH_LONG).show();
            inicializate();
        }else{
            Intent intent = new Intent(this,MainActivityIngreso.class);
@@ -116,11 +116,7 @@ public class MenuPrincipal extends AppCompatActivity {
         startActivity(intent);
 
     }
-    public void Medida(View paramView){
-        Intent intent = new Intent(this, ControLLantasActivity.class);
-        startActivity(intent);
 
-    }
 
     public void Salir(View paramView){
 

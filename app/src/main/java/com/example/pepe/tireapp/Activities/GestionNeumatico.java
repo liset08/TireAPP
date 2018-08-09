@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.pepe.tireapp.MenuPrincipal;
 import com.example.pepe.tireapp.R;
 import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
@@ -57,7 +58,7 @@ public class GestionNeumatico extends AppCompatActivity   {
 
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, letra));
         spinner2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, letra2));
-        ArrayList<Grupoempresa> emp= new ArrayList<Grupoempresa>();
+        ArrayList<TipoNeumatico> emp= new ArrayList<TipoNeumatico>();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id)

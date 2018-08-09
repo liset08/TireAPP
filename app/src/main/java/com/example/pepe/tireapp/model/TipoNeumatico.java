@@ -4,15 +4,95 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-
 /**
  * Created by LISET on 23/07/2018.
  */
 
 public class TipoNeumatico implements Parcelable {
 
+
+    private String radial;
+    private int cant_reencauche;
+    private String observacion;
+    private String dot;
+    private String tag;
+    private String usumod;
+    private String fecreg;
+    private String usureg;
+    private String estado;
+    private double presion_max;
+    private double presion_min;
+    private double precio;
+    private double temperatura;
+    private int desgaste;
+    private String indice_velocidad;
+    private String indice_carga;
+    private double altura_min;
+    private double altura_max;
+
+    @Override
+    public String toString() {
+        return "TipoNeumatico{" +
+                "radial='" + radial + '\'' +
+                ", cant_reencauche=" + cant_reencauche +
+                ", observacion='" + observacion + '\'' +
+                ", dot='" + dot + '\'' +
+                ", tag='" + tag + '\'' +
+                ", usumod='" + usumod + '\'' +
+                ", fecreg='" + fecreg + '\'' +
+                ", usureg='" + usureg + '\'' +
+                ", estado='" + estado + '\'' +
+                ", presion_max=" + presion_max +
+                ", presion_min=" + presion_min +
+                ", precio=" + precio +
+                ", temperatura=" + temperatura +
+                ", desgaste=" + desgaste +
+                ", indice_velocidad='" + indice_velocidad + '\'' +
+                ", indice_carga='" + indice_carga + '\'' +
+                ", altura_min=" + altura_min +
+                ", altura_max=" + altura_max +
+                ", perfil='" + perfil + '\'' +
+                ", ancho=" + ancho +
+                ", modelo='" + modelo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", empresa_id=" + empresa_id +
+                ", Neumatico_id=" + Neumatico_id +
+                '}';
+    }
+
+    private String perfil;
+    private int ancho;
+    private String modelo;
+    private String marca;
+    private int empresa_id;
+    private int Neumatico_id;
+
     public TipoNeumatico() {
 
+    }
+
+    public String getRadial() {
+        return radial;
+    }
+
+    public void setRadial(String radial) {
+        this.radial = radial;
+    }
+
+    public int getCant_reencauche() {
+        return cant_reencauche;
+    }
+
+    public void setCant_reencauche(int cant_reencauche) {
+        this.cant_reencauche = cant_reencauche;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
     }
 
     public String getDot() {
@@ -23,12 +103,12 @@ public class TipoNeumatico implements Parcelable {
         this.dot = dot;
     }
 
-    public String getFecmod() {
-        return fecmod;
+    public String getTag() {
+        return tag;
     }
 
-    public void setFecmod(String fecmod) {
-        this.fecmod = fecmod;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public String getUsumod() {
@@ -135,14 +215,6 @@ public class TipoNeumatico implements Parcelable {
         this.altura_max = altura_max;
     }
 
-    public String getRadial() {
-        return radial;
-    }
-
-    public void setRadial(String radial) {
-        this.radial = radial;
-    }
-
     public String getPerfil() {
         return perfil;
     }
@@ -183,41 +255,22 @@ public class TipoNeumatico implements Parcelable {
         this.empresa_id = empresa_id;
     }
 
-    public int getTipo_neumatico_ID() {
-        return tipo_neumatico_ID;
+    public int getNeumatico_id() {
+        return Neumatico_id;
     }
 
-    public void setTipo_neumatico_ID(int tipo_neumatico_ID) {
-        this.tipo_neumatico_ID = tipo_neumatico_ID;
+    public void setNeumatico_id(int Neumatico_id) {
+        this.Neumatico_id = Neumatico_id;
     }
 
-    private String dot;
 
-    private String fecmod;
-    private String usumod;
-    private String fecreg;
-    private String usureg;
-    private String estado;
-    private double presion_max;
-    private double presion_min;
-    private double precio;
-    private double temperatura;
-    private int desgaste;
-    private String indice_velocidad;
-    private String indice_carga;
-    private double altura_min;
-    private double altura_max;
-    private String radial;
-    private String perfil;
-    private int ancho;
-    private String modelo;
 
-    private String marca;
-    private int empresa_id;
-    private int tipo_neumatico_ID;
-    public TipoNeumatico(Parcel in) {
+    protected TipoNeumatico(Parcel in) {
+        radial = in.readString();
+        cant_reencauche = in.readInt();
+        observacion = in.readString();
         dot = in.readString();
-        fecmod = in.readString();
+        tag = in.readString();
         usumod = in.readString();
         fecreg = in.readString();
         usureg = in.readString();
@@ -231,13 +284,12 @@ public class TipoNeumatico implements Parcelable {
         indice_carga = in.readString();
         altura_min = in.readDouble();
         altura_max = in.readDouble();
-        radial = in.readString();
         perfil = in.readString();
         ancho = in.readInt();
         modelo = in.readString();
         marca = in.readString();
         empresa_id = in.readInt();
-        tipo_neumatico_ID = in.readInt();
+        Neumatico_id = in.readInt();
     }
 
     @Override
@@ -247,8 +299,11 @@ public class TipoNeumatico implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(radial);
+        dest.writeInt(cant_reencauche);
+        dest.writeString(observacion);
         dest.writeString(dot);
-        dest.writeString(fecmod);
+        dest.writeString(tag);
         dest.writeString(usumod);
         dest.writeString(fecreg);
         dest.writeString(usureg);
@@ -262,13 +317,12 @@ public class TipoNeumatico implements Parcelable {
         dest.writeString(indice_carga);
         dest.writeDouble(altura_min);
         dest.writeDouble(altura_max);
-        dest.writeString(radial);
         dest.writeString(perfil);
         dest.writeInt(ancho);
         dest.writeString(modelo);
         dest.writeString(marca);
         dest.writeInt(empresa_id);
-        dest.writeInt(tipo_neumatico_ID);
+        dest.writeInt(Neumatico_id);
     }
 
     @SuppressWarnings("unused")
@@ -283,39 +337,4 @@ public class TipoNeumatico implements Parcelable {
             return new TipoNeumatico[size];
         }
     };
-
-
-    @Override
-    public String toString() {
-        return "TipoNeumatico{" +
-                "dot='" + dot + '\'' +
-                ", fecmod='" + fecmod + '\'' +
-                ", usumod='" + usumod + '\'' +
-                ", fecreg='" + fecreg + '\'' +
-                ", usureg='" + usureg + '\'' +
-                ", estado='" + estado + '\'' +
-                ", presion_max=" + presion_max +
-                ", presion_min=" + presion_min +
-                ", precio=" + precio +
-                ", temperatura=" + temperatura +
-                ", desgaste=" + desgaste +
-                ", indice_velocidad='" + indice_velocidad + '\'' +
-                ", indice_carga='" + indice_carga + '\'' +
-                ", altura_min=" + altura_min +
-                ", altura_max=" + altura_max +
-                ", radial='" + radial + '\'' +
-                ", perfil='" + perfil + '\'' +
-                ", ancho=" + ancho +
-                ", modelo='" + modelo + '\'' +
-                ", marca='" + marca + '\'' +
-                ", empresa_id=" + empresa_id +
-                ", tipo_neumatico_ID=" + tipo_neumatico_ID +
-                '}';
-    }
-
-
-
-
-
 }
-

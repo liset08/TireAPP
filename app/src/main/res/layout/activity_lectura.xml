@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/amarillo"
-    tools:context="com.example.pepe.tireapp.ControLLantasActivity">
+    tools:context="com.example.pepe.tireapp.Activities.LecturaActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                 android:textSize="14sp"/>
 
             <AutoCompleteTextView
-                android:id="@+id/userCPassword"
+                android:id="@+id/txt_pla_lec"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginBottom="5dp"
@@ -71,16 +71,16 @@
                 android:hint="Posicion de llantas:"
                 android:inputType="numberDecimal"
                 android:textColor="@color/negro"
-            android:textSize="14sp"/>
+                android:textSize="14sp"/>
 
             <AutoCompleteTextView
-                android:id="@+id/userCPassword"
+                android:id="@+id/txt_pllan_le"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/rounded_white"
-                android:inputType="numberDecimal"
+                android:inputType="text"
                 android:textSize="14sp"
 
                 />
@@ -102,7 +102,7 @@
                 android:textSize="14sp"/>
 
             <AutoCompleteTextView
-                android:id="@+id/userCPassword"
+                android:id="@+id/txt_pres_lec"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginBottom="5dp"
@@ -131,7 +131,7 @@
                 android:textSize="14sp"/>
 
             <AutoCompleteTextView
-                android:id="@+id/userCPassword"
+                android:id="@+id/txt_des1_lec"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginBottom="5dp"
@@ -160,7 +160,7 @@
                 android:textSize="14sp"/>
 
             <AutoCompleteTextView
-                android:id="@+id/userCPassword"
+                android:id="@+id/txt_des2_lec"
                 android:layout_width="133dp"
                 android:layout_height="30dp"
                 android:layout_marginBottom="5dp"
@@ -188,7 +188,7 @@
                 android:textSize="14sp"/>
 
             <AutoCompleteTextView
-                android:id="@+id/userCPassword"
+                android:id="@+id/txt_des3_lec"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginBottom="5dp"
@@ -216,13 +216,13 @@
                 android:textSize="14sp"/>
 
             <AutoCompleteTextView
-                android:id="@+id/userCPassword"
+                android:id="@+id/txt_taviso_lec"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/rounded_white"
-                android:inputType="numberDecimal"
+                android:inputType="text"
                 android:textSize="14sp"
 
                 />
@@ -268,7 +268,7 @@
             android:orientation="horizontal">
 
             <AutoCompleteTextView
-                android:id="@+id/userCPassword"
+                android:id="@+id/txt_obse_le"
                 android:layout_width="match_parent"
                 android:padding="10dp"
                 android:layout_height="70dp"
@@ -277,7 +277,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/rounded_white"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:textSize="14sp"
 
                 />
@@ -305,6 +305,7 @@
                 android:background="@color/cardview_dark_background"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:id="@+id/btn_add_lec"
                 android:text="Agregar"
                 android:textColor="@color/abs__background_holo_light"
                 android:textSize="14sp"

@@ -23,9 +23,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name="com.orm.SugarApp"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -41,50 +41,35 @@
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.example.pepe.tireapp.model" />
+
         <activity
             android:name=".MainActivityIngreso"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".MenuPrincipal"
-            android:theme="@style/AppTheme" >
-
-
-        </activity>
-        <activity android:name=".Gestion_Camion" >
-
-    </activity>
-
-    <activity
-            android:name=".Activities.GestionNeumatico"
-            android:label="Nuevo Neumatico" />
-        <activity android:name=".Activities.AddActivity" />
-        <activity
-            android:name=".Activities.NeumaticoListActivity"
-            android:label="Almacen de neumaticos"
-            android:theme="@style/AppTheme"></activity>
-        <activity
-            android:name=".Activities.EditarNeumaticoActivity"
-            android:label="Editar Neumatico" />
-        <activity android:name=".Activities.LecturaActivity">
-
-        </activity>
-        <activity android:name=".BuscarNeumaticoxCamionActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
-        <activity android:name=".Activities.InfCamionActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
-        <activity android:name=".Activities.MenuCamionActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".Gestion_Camion" />
+        <activity
+            android:name=".Activities.GestionNeumatico"
+            android:label="Nuevo Neumatico" />
+        <activity android:name=".ControLLantasActivity" />
+        <activity android:name=".Activities.AddActivity" />
+        <activity
+            android:name=".Activities.NeumaticoListActivity"
+            android:label="Almacen de neumaticos"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.EditarNeumaticoActivity"
+            android:label="Editar Neumatico" />
+        <activity android:name=".Activities.MenuCamionActivity" />
+        <activity android:name=".Activities.InfCamionActivity" />
+        <activity android:name=".Activities.MenuAuditoriaActivity"></activity>
     </application>
 
 </manifest>

@@ -1,14 +1,18 @@
 package com.example.pepe.tireapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pepe.tireapp.Activities.GestionNeumatico;
@@ -34,6 +38,18 @@ public class MenuPrincipal extends AppCompatActivity {
 
        if(!usuariologeado){
            Usuario user = UsuarioRepository.getUsuario();
+           NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+           ImageView photoImage = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.menu_photo);
+           photoImage.setBackgroundResource(R.drawable.ic_profile);
+
+           TextView fullnameText = (TextView) navigationView.getHeaderView(0).findViewById(R.id.menu_fullname);
+           fullnameText.setText(user.getNombre() + " " + user.getApellido());
+
+           TextView emailText = (TextView) navigationView.getHeaderView(0).findViewById(R.id.menu_email);
+           emailText.setText(user.getEmpresa() + " - " + user.getRol());
+
+
            Toast.makeText(this,"Eres la ostia " + user.getApellido() ,Toast.LENGTH_LONG).show();
            inicializate();
        }else{
@@ -67,16 +83,42 @@ public class MenuPrincipal extends AppCompatActivity {
                 // Do action by menu item id
                 switch (menuItem.getItemId()){
                     case R.id.nav_inicio:
+                        Intent intent = new Intent(MenuPrincipal.this, NeumaticoListActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.man_camion:
+                        Intent intent2 = new Intent(MenuPrincipal.this, MenuCamionActivity.class);
+                        startActivity(intent2);
                         break;
                     case R.id.intro_medidas:
+                        Intent intent3 = new Intent(MenuPrincipal.this, ControLLantasActivity.class);
+                        startActivity(intent3);
                         break;
                     case R.id.cambio_y_rota:
                         break;
                     case R.id.auditoria:
+                        Intent intent5 = new Intent(MenuPrincipal.this, MenuAuditoriaActivity.class);
+                        intent5.putExtra("tipogestion" , "auditor");
+                        startActivity(intent5);
                         break;
                     case R.id.nav_logout:
+                        new AlertDialog.Builder(MenuPrincipal.this)
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .setTitle("Cerrar Sesión")
+                                .setMessage("¿Está seguro de cerrar sesión?")
+                                .setPositiveButton("Si", new DialogInterface.OnClickListener()
+                                {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(MenuPrincipal.this , MainActivityIngreso.class);
+                                        UsuarioRepository.logout();
+                                        finish();
+                                        startActivity(intent);
+                                    }
+
+                                })
+                                .setNegativeButton("No", null)
+                                .show();
                         break;
                 }
 
@@ -124,11 +166,27 @@ public class MenuPrincipal extends AppCompatActivity {
 
     public void Salir(View paramView){
 
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Cerrar Sesión")
+                .setMessage("¿Está seguro de cerrar sesión?")
+                .setPositiveButton("Si", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(MenuPrincipal.this , MainActivityIngreso.class);
+                        UsuarioRepository.logout();
+                        finish();
+                        startActivity(intent);
+                    }
 
-        Intent intent = new Intent(MenuPrincipal.this , MainActivityIngreso.class);
-        UsuarioRepository.logout();
-        finish();
-        startActivity(intent);
+                })
+                .setNegativeButton("No", null)
+                .show();
+
+
+
+
 
     }
 

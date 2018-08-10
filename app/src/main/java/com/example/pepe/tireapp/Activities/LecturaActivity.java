@@ -31,7 +31,9 @@ public class LecturaActivity extends AppCompatActivity {
     Button btn_add_lec;
     public double presion,d1,d2,d3,promdesgaste;
     public String obser,aviso;
+    String placa;
 public int idPlaca;
+public int ejes;
     public String posicion;
 
     @Override
@@ -49,8 +51,10 @@ public int idPlaca;
         txt_pres_lec=(EditText) findViewById(R.id.txt_pres_lec);
         txt_obse_le=(EditText) findViewById(R.id.txt_obse_le);
         txt_taviso_lec=(EditText) findViewById(R.id.txt_taviso_lec);
-        String placa = getIntent().getExtras().getString("placa");
-        int ejes = getIntent().getExtras().getInt("ejes");
+
+
+         placa = getIntent().getExtras().getString("placa");
+         ejes = getIntent().getExtras().getInt("ejes");
          idPlaca = getIntent().getExtras().getInt("idPlaca");
         posicion = getIntent().getExtras().getString("posicion");
 
@@ -61,7 +65,7 @@ public int idPlaca;
             @Override
             public void onClick(View v) {
 
-                Double presion= Double.parseDouble(txt_pres_lec.getText().toString());
+                 presion= Double.parseDouble(txt_pres_lec.getText().toString());
                  d1= Double.parseDouble(txt_des1_lec.getText().toString());
                  d2= Double.parseDouble(txt_des2_lec.getText().toString());
                  d3= Double.parseDouble(txt_des3_lec.getText().toString());
@@ -75,7 +79,9 @@ public int idPlaca;
                         aviso = "A5";
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Advertencia...!!");
-                        builder.setMessage("Presion baja ");
+                        builder.setIcon(R.drawable.icon_waning);
+
+                        builder.setMessage("Presion baja en el neumatico");
                         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -90,7 +96,9 @@ public int idPlaca;
                         aviso = "A4";
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Advertencia...!!");
-                        builder.setMessage("Valor de Desgaste superado en le neumatico  ");
+                        builder.setIcon(R.drawable.icon_waning);
+
+                        builder.setMessage("Valor de Desgaste promedio superado en el neumatico  ");
                         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -102,10 +110,11 @@ public int idPlaca;
                         });
                         builder.create().show();
 
-                    }else if (promdesgaste>Constante.descgaste || presion > Constante.presionMaxima){
+                    }else if (promdesgaste>Constante.descgaste &&  presion > Constante.presionMaxima){
                         aviso = "A3";
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Advertencia...!!");
+                        builder.setIcon(R.drawable.icon_waning);
                         builder.setMessage("Csmbio de neumatico presion baja y demasiado desgaste");
                         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
@@ -143,6 +152,8 @@ public int idPlaca;
         lectura.setDesgaste_2(d2);
         lectura.setDesgaste_3(d3);
         lectura.setPresion(presion);
+        lectura.setProm_desgaste(promdesgaste);
+
         lectura.setObservacion(obser);
         lectura.setCamionID(idPlaca);
         lectura.setNeumaticoID(23);
@@ -164,6 +175,10 @@ public int idPlaca;
 
                     if (response.isSuccessful()) {
                         Intent intent = new Intent(LecturaActivity.this, InfCamionActivity.class);
+                        intent.putExtra("placa", placa);
+                        intent.putExtra("idPlaca", idPlaca);
+                        intent.putExtra("ejes", ejes);
+
                         startActivity(intent);
                     } else {
                         Log.e(TAG, "onError: " + response.errorBody().string());

@@ -1,3 +1,4 @@
+
 package com.example.pepe.tireapp.Activities;
 
 import android.content.Intent;
@@ -18,7 +19,8 @@ import com.example.pepe.tireapp.model.TipoNeumatico;
 import org.w3c.dom.Text;
 
 public class InfCamionActivity extends AppCompatActivity {
-
+    public String placa;
+    public int ejes, idPlaca;
     private TextView textViewPlaca;
 
 
@@ -28,12 +30,12 @@ public class InfCamionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inf_camion);
 
+
+
         textViewPlaca = findViewById(R.id.textViewPlaca);
-
-        final String placa = getIntent().getExtras().getString("placa");
-        int ejes = getIntent().getExtras().getInt("ejes");
-       final int idPlaca = getIntent().getExtras().getInt("idPlaca");
-
+        placa = getIntent().getExtras().getString("placa");
+        ejes = getIntent().getExtras().getInt("ejes");
+        idPlaca = getIntent().getExtras().getInt("idPlaca");
 
         textViewPlaca.setText(placa);
 
@@ -43,29 +45,29 @@ public class InfCamionActivity extends AppCompatActivity {
         LinearLayout llBotonera4 = (LinearLayout) findViewById(R.id.llBotonera4);
         LinearLayout numeros = (LinearLayout) findViewById(R.id.numeros);
         int numEjes = ejes;
-        int buble = numEjes+1;
+        int buble = numEjes + 1;
         //Creamos las propiedades de layout que tendrán los botones.
         //Son LinearLayout.LayoutParams porque los botones van a estar en un LinearLayout.
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(50,
-                100 );
+                100);
         LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(50,
-                50 );
+                50);
 
-        int k=0;
+        int k = 0;
         //Creamos los marcadores que indican la posición de la llanta en el eje Y
         for (int i = 1; i <= buble; i++) {
 
             //el if cuando i sea 2 solo añadirá un espacio en blanco para diferenciar
             //el primer eje de los demas
-            if(i == 2){
+            if (i == 2) {
                 View view = new View(this);
                 view.setLayoutParams(lp2);
                 numeros.addView(view);
-            }else{
-                k=i;
-                if(i>2)
-                    k=i-1;
+            } else {
+                k = i;
+                if (i > 2)
+                    k = i - 1;
                 TextView text = new TextView(this);
                 text.setLayoutParams(lp);
                 text.setText(String.valueOf(k));
@@ -73,22 +75,22 @@ public class InfCamionActivity extends AppCompatActivity {
                 text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 numeros.addView(text);
             }
-            if(k == numEjes)
-                k=0;
+            if (k == numEjes)
+                k = 0;
         }
 
         //Creamos los botones en bucle
         //Posicion A
         for (int i = 1; i <= buble; i++) {
 
-            if(i == 2){
+            if (i == 2) {
                 View view = new View(this);
                 view.setLayoutParams(lp2);
                 llBotonera1.addView(view);
-            }else{
-                k=i;
-                if(i>2)
-                    k=i-1;
+            } else {
+                k = i;
+                if (i > 2)
+                    k = i - 1;
                 Button button = new Button(this);
                 button.setLayoutParams(lp);
                 button.setBackgroundResource(R.drawable.neumatico);
@@ -96,12 +98,13 @@ public class InfCamionActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(InfCamionActivity.this,"A" + String.valueOf(s),Toast.LENGTH_SHORT).show();
-                        String pos="A"+String.valueOf(s);
+                        Toast.makeText(InfCamionActivity.this, "A" + String.valueOf(s), Toast.LENGTH_SHORT).show();
+                        String pos = "A" + String.valueOf(s);
                         Intent intent = new Intent(InfCamionActivity.this, LecturaActivity.class);
-                        intent.putExtra("placa",  placa);
-                        intent.putExtra("idPlaca" , idPlaca);
-                        intent.putExtra("posicion" , pos);
+                        intent.putExtra("placa", placa);
+                        intent.putExtra("idPlaca", idPlaca);
+                        intent.putExtra("posicion", pos);
+                        intent.putExtra("ejes", ejes);
 
 
                         startActivity(intent);
@@ -109,26 +112,24 @@ public class InfCamionActivity extends AppCompatActivity {
                 });
                 llBotonera1.addView(button);
             }
-            if(k == numEjes)
-                k=0;
+            if (k == numEjes)
+                k = 0;
         }
 
         //Posicion B
         for (int i = 1; i <= buble; i++) {
-            if(i == 2){
+            if (i == 2) {
                 View view = new View(this);
                 view.setLayoutParams(lp2);
                 llBotonera2.addView(view);
-            }
-            else if(i == 1){
+            } else if (i == 1) {
                 View view = new View(this);
                 view.setLayoutParams(lp);
                 llBotonera2.addView(view);
-            }
-            else{
-                k=i;
-                if(i>2)
-                    k=i-1;
+            } else {
+                k = i;
+                if (i > 2)
+                    k = i - 1;
                 Button button = new Button(this);
                 button.setLayoutParams(lp);
                 button.setBackgroundResource(R.drawable.neumatico);
@@ -136,35 +137,35 @@ public class InfCamionActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(InfCamionActivity.this,"B" + String.valueOf(s),Toast.LENGTH_SHORT).show();
-                        String pos="B"+String.valueOf(s);
+                        Toast.makeText(InfCamionActivity.this, "B" + String.valueOf(s), Toast.LENGTH_SHORT).show();
+                        String pos = "B" + String.valueOf(s);
                         Intent intent = new Intent(InfCamionActivity.this, LecturaActivity.class);
-                        intent.putExtra("placa",  placa);
-                        intent.putExtra("idPlaca" , idPlaca);
-                        intent.putExtra("posicion" , pos);
+                        intent.putExtra("placa", placa);
+                        intent.putExtra("idPlaca", idPlaca);
+                        intent.putExtra("posicion", pos);
+                        intent.putExtra("ejes", ejes);
+
                         startActivity(intent);
 
                     }
                 });
                 llBotonera2.addView(button);
             }
-            if(k == numEjes)
-                k=0;
+            if (k == numEjes)
+                k = 0;
         }
 
         //Posicion C
         for (int i = 1; i <= buble; i++) {
-            if(i == 2){
+            if (i == 2) {
                 View view = new View(this);
                 view.setLayoutParams(lp2);
                 llBotonera3.addView(view);
-            }
-            else if(i == 1){
+            } else if (i == 1) {
                 View view = new View(this);
                 view.setLayoutParams(lp);
                 llBotonera3.addView(view);
-            }
-            else {
+            } else {
                 k = i;
                 if (i > 2)
                     k = i - 1;
@@ -175,29 +176,31 @@ public class InfCamionActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(InfCamionActivity.this,"C" + String.valueOf(s),Toast.LENGTH_SHORT).show();
-                        String pos="C"+String.valueOf(s);
+                        Toast.makeText(InfCamionActivity.this, "C" + String.valueOf(s), Toast.LENGTH_SHORT).show();
+                        String pos = "C" + String.valueOf(s);
                         Intent intent = new Intent(InfCamionActivity.this, LecturaActivity.class);
-                        intent.putExtra("placa",  placa);
-                        intent.putExtra("idPlaca" , idPlaca);
-                        intent.putExtra("posicion" , pos);
+                        intent.putExtra("placa", placa);
+                        intent.putExtra("idPlaca", idPlaca);
+                        intent.putExtra("posicion", pos);
+                        intent.putExtra("ejes", ejes);
+
                         startActivity(intent);
 
                     }
                 });
                 llBotonera3.addView(button);
             }
-            if(k == numEjes)
-                k=0;
+            if (k == numEjes)
+                k = 0;
         }
 
         //Posicion D
         for (int i = 1; i <= buble; i++) {
-            if(i == 2){
+            if (i == 2) {
                 View view = new View(this);
                 view.setLayoutParams(lp2);
                 llBotonera4.addView(view);
-            }else {
+            } else {
                 k = i;
                 if (i > 2)
                     k = i - 1;
@@ -208,22 +211,24 @@ public class InfCamionActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(InfCamionActivity.this,"D" + String.valueOf(s),Toast.LENGTH_SHORT).show();
-                        String pos="D"+String.valueOf(s);
+                        Toast.makeText(InfCamionActivity.this, "D" + String.valueOf(s), Toast.LENGTH_SHORT).show();
+                        String pos = "D" + String.valueOf(s);
                         Intent intent = new Intent(InfCamionActivity.this, LecturaActivity.class);
-                        intent.putExtra("placa",  placa);
-                        intent.putExtra("idPlaca" , idPlaca);
-                        intent.putExtra("posicion" , pos);
+                        intent.putExtra("placa", placa);
+                        intent.putExtra("idPlaca", idPlaca);
+                        intent.putExtra("posicion", pos);
+                        intent.putExtra("ejes", ejes);
+
                         startActivity(intent);
 
                     }
                 });
                 llBotonera4.addView(button);
             }
-            if(k == numEjes)
-                k=0;
+            if (k == numEjes)
+                k = 0;
         }
 
-
     }
-}
+    }
+

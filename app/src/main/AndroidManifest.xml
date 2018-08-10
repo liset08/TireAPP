@@ -58,7 +58,7 @@
         <activity
             android:name=".Activities.GestionNeumatico"
             android:label="Nuevo Neumatico" />
-        <activity android:name=".BuscarNeumaticoxCamionActivity" />
+        <activity android:name=".ControLLantasActivity" />
         <activity android:name=".Activities.AddActivity" />
         <activity
             android:name=".Activities.NeumaticoListActivity"
@@ -69,9 +69,7 @@
             android:label="Editar Neumatico" />
         <activity android:name=".Activities.MenuCamionActivity" />
         <activity android:name=".Activities.InfCamionActivity" />
-        <activity android:name=".Activities.MenuAuditoriaActivity" />
-        <activity android:name=".Activities.GestionInfCamionActivity" />
-        <activity android:name=".Activities.BuscarDOTActivity"></activity>
+        <activity android:name=".Activities.MenuAuditoriaActivity"></activity>
     </application>
 
 </manifest>

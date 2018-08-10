@@ -48,11 +48,7 @@
         <activity
             android:name=".MenuPrincipal"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Gestion_Camion" />
         <activity
@@ -67,8 +63,17 @@
         <activity
             android:name=".Activities.EditarNeumaticoActivity"
             android:label="Editar Neumatico" />
-        <activity android:name=".Activities.MenuCamionActivity" />
-        <activity android:name=".Activities.InfCamionActivity" />
+        <activity android:name=".Activities.MenuCamionActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <activity android:name=".Activities.InfCamionActivity" />
+        <activity android:name=".Activities.LecturaActivity" />
+
         <activity android:name=".Activities.MenuAuditoriaActivity"></activity>
     </application>
 

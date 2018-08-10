@@ -8,12 +8,12 @@
         <item
             android:id="@+id/nav_inicio"
             android:icon="@android:drawable/ic_menu_my_calendar"
-            android:title="Inicio" />
+            android:title="Gestión de Neumático" />
 
         <item
             android:id="@+id/man_camion"
             android:icon="@android:drawable/ic_menu_my_calendar"
-            android:title="Mantenimiento de Camion" />
+            android:title="Gestión de Camión" />
 
         <item
             android:id="@+id/intro_medidas"
@@ -23,7 +23,7 @@
         <item
             android:id="@+id/cambio_y_rota"
             android:icon="@android:drawable/ic_menu_mapmode"
-            android:title="Cambio y Rotacion" />
+            android:title="Cambio y Rotación" />
 
         <item
             android:id="@+id/auditoria"

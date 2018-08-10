@@ -49,8 +49,6 @@ public class MenuPrincipal extends AppCompatActivity {
            TextView emailText = (TextView) navigationView.getHeaderView(0).findViewById(R.id.menu_email);
            emailText.setText(user.getEmpresa() + " - " + user.getRol());
 
-
-           Toast.makeText(this,"Eres la ostia " + user.getApellido() ,Toast.LENGTH_LONG).show();
            inicializate();
        }else{
            Intent intent = new Intent(this,MainActivityIngreso.class);
@@ -91,7 +89,7 @@ public class MenuPrincipal extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case R.id.intro_medidas:
-                        Intent intent3 = new Intent(MenuPrincipal.this, ControLLantasActivity.class);
+                        Intent intent3 = new Intent(MenuPrincipal.this, BuscarNeumaticoxCamionActivity.class);
                         startActivity(intent3);
                         break;
                     case R.id.cambio_y_rota:
@@ -159,7 +157,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
     public void Medida(View paramView){
-        Intent intent = new Intent(this, ControLLantasActivity.class);
+        Intent intent = new Intent(this, BuscarNeumaticoxCamionActivity.class);
         startActivity(intent);
 
     }

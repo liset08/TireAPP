@@ -15,6 +15,7 @@ import com.example.pepe.tireapp.Activities.MenuCamionActivity;
 import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
 import com.example.pepe.tireapp.model.Camion;
+import com.example.pepe.tireapp.repositories.CamionRepository;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -43,7 +44,7 @@ public class Gestion_Camion extends AppCompatActivity implements AdapterView.OnI
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Camion camion = dataNewCamion();
+                final Camion camion = dataNewCamion();
 
                 ApiService api = ApiServiceGenerator.createService(ApiService.class);
 
@@ -54,8 +55,7 @@ public class Gestion_Camion extends AppCompatActivity implements AdapterView.OnI
                     public void onResponse(Call call, Response response) {
                         Toast.makeText(Gestion_Camion.this,"REGISTRO EXITOSO", Toast.LENGTH_LONG).show();
                         finish();
-                        Intent intent = new Intent(Gestion_Camion.this, MenuCamionActivity.class);
-                        startActivity(intent);
+                        CamionRepository.añadirCamion(camion);
                     }
 
                     @Override

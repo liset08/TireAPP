@@ -4,6 +4,7 @@ package com.example.pepe.tireapp.Service;
 
 import com.example.pepe.tireapp.ResponseMessage;
 import com.example.pepe.tireapp.model.Camion;
+import com.example.pepe.tireapp.model.Camion_neumaticos;
 import com.example.pepe.tireapp.model.Grupoempresa;
 import com.example.pepe.tireapp.model.Lectura;
 import com.example.pepe.tireapp.model.Login;
@@ -77,4 +78,7 @@ public interface ApiService {
 
     @POST("/api/usuario/login")
     Call<List<Usuario>> login(@Body Login login);
+
+    @POST("/api/camion/asignNeumatic")
+    Call<Void> asignarNeumatico(@Body Camion_neumaticos camion_neumaticos);
 }

@@ -7,17 +7,28 @@ package com.example.pepe.tireapp.model;
 public class Camion {
 
 
-    private String fecmod;
-    private String usumod;
-    private String fecreg;
-    private String usureg;
-    private String estado;
+    private int empresa_id;
+    private int camion_ID;
+    private String marca;
+    private String modelo;
+    private String tag;
+    private String placa;
     private double Kilometraje;
     private double carga_neta;
     private double carga_util;
     private int num_llantas;
     private int ejes;
-    private String marca;
+    private String fecmod;
+    private String usumod;
+    private String fecreg;
+    private String usureg;
+    private String estado;
+
+
+
+
+
+    public Camion(){}
 
     @Override
     public String toString() {
@@ -41,11 +52,23 @@ public class Camion {
                 '}';
     }
 
-    private String modelo;
-    private String tag;
-    private String placa;
-    private int empresa_id;
-    private int camion_ID;
+
+    public Camion(int empresa_id, int camion_ID,String tag, String marca, String modelo, String placa, double kilometraje, int num_llantas, int ejes,double carga_util,double carga_neta, String fecreg, String usureg, String estado) {
+        this.empresa_id = empresa_id;
+        this.tag = tag;
+        this.camion_ID = camion_ID;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.placa = placa;
+        Kilometraje = kilometraje;
+        this.num_llantas = num_llantas;
+        this.ejes = ejes;
+        this.carga_neta = carga_neta;
+        this.carga_util = carga_util;
+        this.fecreg = fecreg;
+        this.usureg = usureg;
+        this.estado = estado;
+    }
 
     public String getFecmod() {
         return fecmod;

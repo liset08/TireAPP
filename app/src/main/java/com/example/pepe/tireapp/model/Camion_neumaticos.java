@@ -20,6 +20,8 @@ public class Camion_neumaticos implements Parcelable {
     private int camion_id;
     private int camion_neum_ID;
 
+    public Camion_neumaticos(){}
+
     public String getFecmod() {
         return fecmod;
     }
@@ -100,7 +102,7 @@ public class Camion_neumaticos implements Parcelable {
         this.camion_neum_ID = camion_neum_ID;
     }
 
-    protected Camion_neumaticos(Parcel in) {
+    public Camion_neumaticos(Parcel in) {
         fecmod = in.readString();
         usumod = in.readString();
         fecreg = in.readString();

@@ -10,7 +10,12 @@ import android.os.Parcelable;
 
 public class TipoNeumatico implements Parcelable {
 
-
+    private String perfil;
+    private int ancho;
+    private String modelo;
+    private String marca;
+    private int empresa_id;
+    private int Neumatico_id;
     private String radial;
     private int cant_reencauche;
     private String observacion;
@@ -60,15 +65,18 @@ public class TipoNeumatico implements Parcelable {
                 '}';
     }
 
-    private String perfil;
-    private int ancho;
-    private String modelo;
-    private String marca;
-    private int empresa_id;
-    private int Neumatico_id;
+
 
     public TipoNeumatico() {
 
+    }
+
+    public TipoNeumatico(int empresa_id, int neumatico_id, String modelo, String marca, String dot) {
+        this.modelo = modelo;
+        this.marca = marca;
+        this.empresa_id = empresa_id;
+        Neumatico_id = neumatico_id;
+        this.dot = dot;
     }
 
     public String getRadial() {

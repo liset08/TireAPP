@@ -19,6 +19,7 @@ import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
 import com.example.pepe.tireapp.adapters.CamionListAdpater;
 import com.example.pepe.tireapp.model.Camion;
+import com.example.pepe.tireapp.repositories.CamionRepository;
 
 
 import java.util.Collections;
@@ -35,6 +36,16 @@ public class MenuCamionActivity extends AppCompatActivity {
     private EditText editTextFind;
     private Button buscar;
 
+    private static final int REGISTER_FORM_REQUEST = 100;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REGISTER_FORM_REQUEST) {
+            //Refresh del intent
+            iniciar();
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,18 +55,29 @@ public class MenuCamionActivity extends AppCompatActivity {
         buscar     = findViewById(R.id.btnBuscarCamion);
 
 
+        iniciar();
 
+
+
+    }
+
+    public void iniciar(){
         camionList = findViewById(R.id.recyclerviewCamion);
         camionList.setLayoutManager(new LinearLayoutManager(this));
         camionList.setAdapter(new CamionListAdpater(this));
 
-        initialize();
+
+
+        CamionListAdpater adapter = (CamionListAdpater) camionList.getAdapter();
+        adapter.setCamiones(CamionRepository.getList());
+        adapter.notifyDataSetChanged();
     }
 
     public void newCamion(View view){
 
-        Intent intent = new Intent(this, Gestion_Camion.class);
-        startActivity(intent);
+        Intent intent = new Intent(MenuCamionActivity.this, Gestion_Camion.class);
+        startActivityForResult(intent, REGISTER_FORM_REQUEST);
+        camionList.removeAllViews();
 
     }
 
@@ -64,6 +86,23 @@ public class MenuCamionActivity extends AppCompatActivity {
 
         String buscar = editTextFind.getText().toString();
 
+        Camion camion = CamionRepository.buscarCamionbyPlaca(buscar);
+
+        if(camion == null){
+            Toast.makeText(MenuCamionActivity.this, "Camión no encontrado", Toast.LENGTH_LONG).show();
+        }else{
+            int idPlaca = camion.getCamion_ID();
+            String placa = camion.getPlaca();
+            int ejes = camion.getEjes();
+            Intent intent = new Intent(MenuCamionActivity.this, GestionInfCamionActivity.class);
+            intent.putExtra("placa",  placa);
+            intent.putExtra("ejes" , ejes);
+            intent.putExtra("idPlaca" , idPlaca);
+            startActivity(intent);
+        }
+
+
+/*
         ApiService service = ApiServiceGenerator.createService(ApiService.class);
 
         Call<Camion> call = service.findCamion(buscar);
@@ -109,7 +148,7 @@ public class MenuCamionActivity extends AppCompatActivity {
                     Toast.makeText(MenuCamionActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 }catch (Throwable x){}
             }
-        });
+        });*/
 
     }
 

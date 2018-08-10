@@ -50,7 +50,7 @@ public class MenuPrincipal extends AppCompatActivity {
            emailText.setText(user.getEmpresa() + " - " + user.getRol());
 
 
-           Toast.makeText(this,"Eres la ostia " + user.getApellido() ,Toast.LENGTH_LONG).show();
+
            inicializate();
        }else{
            Intent intent = new Intent(this,MainActivityIngreso.class);
@@ -91,8 +91,8 @@ public class MenuPrincipal extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case R.id.intro_medidas:
-                        Intent intent3 = new Intent(MenuPrincipal.this, ControLLantasActivity.class);
-                        startActivity(intent3);
+                        /*Intent intent3 = new Intent(MenuPrincipal.this, ControLLantasActivity.class);
+                        startActivity(intent3);*/
                         break;
                     case R.id.cambio_y_rota:
                         break;
@@ -159,8 +159,8 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
     public void Medida(View paramView){
-        Intent intent = new Intent(this, ControLLantasActivity.class);
-        startActivity(intent);
+       /* Intent intent = new Intent(this, ControLLantasActivity.class);
+        startActivity(intent);*/
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.pepe.tireapp.repositories;
 
+import com.example.pepe.tireapp.model.Camion;
 import com.example.pepe.tireapp.model.Camion_neumaticos;
 
 import java.util.ArrayList;
@@ -30,6 +31,20 @@ public class CamionNeumaticRepository {
 
 
         return camiones;
+    }
+
+    public static Camion_neumaticos buscarneumati(String posicion){
+
+        Camion_neumaticos x = null;
+
+        for (int i = 0; i < camiones_Neumaticos.size(); i++){
+            if(camiones_Neumaticos.get(i).getPosicion().equals(posicion)){
+                x = camiones_Neumaticos.get(i);
+            }
+        }
+
+        return x;
+
     }
 
 }

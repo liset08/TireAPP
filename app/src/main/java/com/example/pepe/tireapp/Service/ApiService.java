@@ -81,4 +81,7 @@ public interface ApiService {
 
     @POST("/api/camion/asignNeumatic")
     Call<Void> asignarNeumatico(@Body Camion_neumaticos camion_neumaticos);
+
+    @DELETE("/api/CamNeu/delete/{id}")
+    Call<Void> deleteCamNeu(@Path("id") int id);
 }

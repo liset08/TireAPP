@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.pepe.tireapp.Gestion_Camion;
 import com.example.pepe.tireapp.R;
 import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
@@ -16,6 +17,8 @@ import com.example.pepe.tireapp.adapters.CamionListAdpater;
 import com.example.pepe.tireapp.adapters.NeumaticoListAdapter;
 import com.example.pepe.tireapp.model.Grupoempresa;
 import com.example.pepe.tireapp.model.TipoNeumatico;
+import com.example.pepe.tireapp.repositories.CamionRepository;
+import com.example.pepe.tireapp.repositories.NeumaticoRepository;
 
 import java.util.List;
 
@@ -27,22 +30,47 @@ public class NeumaticoListActivity extends AppCompatActivity {
 
     private static final String TAG = NeumaticoListActivity.class.getSimpleName();
     private RecyclerView neumaticoList;
-
+    private static final int REGISTER_FORM_REQUEST = 100;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REGISTER_FORM_REQUEST) {
+            //Refresh del intent
+            iniciar();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neumatico_list);
 
+
+
+        iniciar();
+
+
+
+
+    }
+
+    public void iniciar(){
         neumaticoList = findViewById(R.id.recyclerview);
         neumaticoList.setLayoutManager(new LinearLayoutManager(this));
 
         neumaticoList.setAdapter(new NeumaticoListAdapter(this));
 
-        initialize();
 
+        NeumaticoListAdapter adapter = (NeumaticoListAdapter) neumaticoList.getAdapter();
+        adapter.setTipoNeumatico(NeumaticoRepository.getList());
+        adapter.notifyDataSetChanged();
 
+    }
 
+    public void showRegisterdenuncia(View view){
+
+        Intent intent = new Intent(NeumaticoListActivity.this, GestionNeumatico.class);
+        startActivityForResult(intent, 100);
+        neumaticoList.removeAllViews();
 
     }
 
@@ -65,9 +93,6 @@ public class NeumaticoListActivity extends AppCompatActivity {
                         List<TipoNeumatico> tneumatico = response.body();
                         Log.d(TAG, "productos: " + tneumatico);
 
-                        NeumaticoListAdapter adapter = (NeumaticoListAdapter) neumaticoList.getAdapter();
-                        adapter.setTipoNeumatico(tneumatico);
-                        adapter.notifyDataSetChanged();
 
                     } else {
                         Log.e(TAG, "onError: " + response.errorBody().string());
@@ -93,7 +118,5 @@ public class NeumaticoListActivity extends AppCompatActivity {
         });
     }
 
-    public void showRegisterdenuncia(View view){
-        startActivityForResult(new Intent(this, GestionNeumatico.class), 100);
-    }
+
 }

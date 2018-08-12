@@ -169,7 +169,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 app:cardBackgroundColor="@color/abs__background_holo_dark"
-
+android:onClick="GestionCambio"
                 android:layout_rowWeight="1"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp">

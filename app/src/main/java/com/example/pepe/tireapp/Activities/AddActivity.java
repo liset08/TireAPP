@@ -11,7 +11,9 @@ import android.widget.Toast;
 import com.example.pepe.tireapp.R;
 import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
+import com.example.pepe.tireapp.model.Camion;
 import com.example.pepe.tireapp.model.Grupoempresa;
+import com.example.pepe.tireapp.repositories.CamionRepository;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,13 +33,29 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        editesatdo=(EditText) findViewById(R.id.editEstadodi);
-        editname=(EditText) findViewById(R.id.editName);
-        button=(Button) findViewById(R.id.button);
+        editesatdo=(EditText) findViewById(R.id.sviewFindCamionLectur);
+
     }
 
 
+    public void findCamion(View view){
 
+        String buscar = editesatdo.getText().toString();
+
+        Camion camion = CamionRepository.buscarCamionbyPlaca(buscar);
+
+        if(camion == null){
+            Toast.makeText(AddActivity.this, "Camión no encontrado", Toast.LENGTH_LONG).show();
+        }else{
+            int idPlaca = camion.getCamion_ID();
+            String placa = camion.getPlaca();
+            int ejes = camion.getEjes();
+            Intent intent = new Intent(AddActivity.this, InfCamionActivity.class);
+            intent.putExtra("placa",  placa);
+            intent.putExtra("ejes" , ejes);
+            intent.putExtra("idPlaca" , idPlaca);
+            startActivity(intent);
+        }}
     public void callRegister(View view) {
 
 

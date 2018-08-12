@@ -69,8 +69,11 @@
             android:label="Editar Neumatico" />
         <activity android:name=".Activities.MenuCamionActivity" />
         <activity android:name=".Activities.InfCamionActivity" />
-        <activity android:name=".Activities.MenuAuditoriaActivity"></activity>
-        <activity android:name=".Activities.BuscarDOTActivity"/>
+        <activity android:name=".Activities.MenuAuditoriaActivity" />
+        <activity android:name=".Activities.BuscarDOTActivity" />
+        <activity android:name=".Activities.LecturaActivity" />
+        <activity android:name=".CambioNeuaticoActivity" />
+        <activity android:name=".CambioSearchActivity"></activity>
     </application>
 
 </manifest>

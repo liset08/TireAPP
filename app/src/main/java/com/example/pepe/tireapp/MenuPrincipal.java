@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pepe.tireapp.Activities.AddActivity;
 import com.example.pepe.tireapp.Activities.GestionNeumatico;
 import com.example.pepe.tireapp.Activities.MenuAuditoriaActivity;
 import com.example.pepe.tireapp.Activities.MenuCamionActivity;
@@ -152,15 +153,23 @@ public class MenuPrincipal extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void GestionCambio(View paramView){
+
+        Intent intent = new Intent(this, CambioSearchActivity.class);
+        startActivity(intent);
+
+    }
 
     public void GestionLlanta(View paramView){
         Intent intent = new Intent(this, NeumaticoListActivity.class);
         startActivity(intent);
 
     }
+
+
     public void Medida(View paramView){
-       /* Intent intent = new Intent(this, ControLLantasActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(this, AddActivity.class);
+        startActivity(intent);
 
     }
 

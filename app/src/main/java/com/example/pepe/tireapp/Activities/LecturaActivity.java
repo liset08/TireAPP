@@ -2,6 +2,7 @@ package com.example.pepe.tireapp.Activities;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,8 +16,15 @@ import android.widget.Toast;
 import com.example.pepe.tireapp.R;
 import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
+import com.example.pepe.tireapp.model.Camion_neumaticos;
 import com.example.pepe.tireapp.model.Lectura;
+import com.example.pepe.tireapp.repositories.CamionNeumaticRepository;
 import com.example.pepe.tireapp.repositories.Constante;
+import com.example.pepe.tireapp.repositories.LecturaRepository;
+import com.example.pepe.tireapp.repositories.UsuarioRepository;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,7 +40,7 @@ public class LecturaActivity extends AppCompatActivity {
     public double presion,d1,d2,d3,promdesgaste;
     public String obser,aviso;
     String placa;
-public int idPlaca;
+public int idPlaca,idneu;
 public int ejes;
     public String posicion;
 
@@ -57,6 +65,9 @@ public int ejes;
          ejes = getIntent().getExtras().getInt("ejes");
          idPlaca = getIntent().getExtras().getInt("idPlaca");
         posicion = getIntent().getExtras().getString("posicion");
+        idneu = getIntent().getExtras().getInt("idneu");
+
+
 
         txt_placa_lec.setText(placa);
         txt_pllan_le.setText(posicion);
@@ -75,13 +86,13 @@ public int ejes;
 
 
 
-                    if (presion > Constante.presionMaxima) {
-                        aviso = "A5";
+                    if ((promdesgaste > Constante.descgaste) &&  (presion > Constante.presionMaxima)) {
+                        aviso = "A3";
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Advertencia...!!");
                         builder.setIcon(R.drawable.icon_waning);
 
-                        builder.setMessage("Presion baja en el neumatico");
+                        builder.setMessage("Cambio de neumatico presion baja y demasiado desgaste");
                         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -92,7 +103,7 @@ public int ejes;
                             }
                         });
                         builder.create().show();
-                    }else if (promdesgaste>Constante.descgaste){
+                    }else if (promdesgaste > Constante.descgaste){
                         aviso = "A4";
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Advertencia...!!");
@@ -110,16 +121,15 @@ public int ejes;
                         });
                         builder.create().show();
 
-                    }else if (promdesgaste>Constante.descgaste &&  presion > Constante.presionMaxima){
-                        aviso = "A3";
+                    }else if (presion > Constante.presionMaxima){
+                        aviso = "A5";
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Advertencia...!!");
                         builder.setIcon(R.drawable.icon_waning);
-                        builder.setMessage("Csmbio de neumatico presion baja y demasiado desgaste");
+                        builder.setMessage("Presion baja en el neumatico");
                         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
 
                                 callRegisterLectura();
 //
@@ -143,27 +153,33 @@ public int ejes;
 
     }
 
-    public void callRegisterLectura () {
+    public Lectura obtenerValores(){
 
 
-        final Lectura lectura=new Lectura();
 
+        Lectura lectura = new Lectura();
         lectura.setDesgaste_1(d1);
         lectura.setDesgaste_2(d2);
         lectura.setDesgaste_3(d3);
         lectura.setPresion(presion);
         lectura.setProm_desgaste(promdesgaste);
-
+        lectura.setUsureg(posicion);
         lectura.setObservacion(obser);
         lectura.setCamionID(idPlaca);
-        lectura.setNeumaticoID(23);
+        lectura.setNeumaticoID(idneu);
         lectura.setKilometraje_Neu(13);
         lectura.setEstado(aviso);
         lectura.setVarianza(13.3);
 
+        return lectura;
+    }
+
+    public void callRegisterLectura () {
+
+
         ApiService service = ApiServiceGenerator.createService(ApiService.class);
 
-        Call call = service.createLectur(lectura);
+        Call call = service.createLectur(obtenerValores());
 
         call.enqueue(new Callback() {
             @Override
@@ -174,12 +190,12 @@ public int ejes;
 
 
                     if (response.isSuccessful()) {
-                        Intent intent = new Intent(LecturaActivity.this, InfCamionActivity.class);
-                        intent.putExtra("placa", placa);
-                        intent.putExtra("idPlaca", idPlaca);
-                        intent.putExtra("ejes", ejes);
+                        Toast.makeText(LecturaActivity.this,"Cambios guardados " , Toast.LENGTH_LONG).show();
+                        LecturaRepository.createLectura(obtenerValores());
 
-                        startActivity(intent);
+                        finish();
+
+
                     } else {
                         Log.e(TAG, "onError: " + response.errorBody().string());
                         throw new Exception("Error en el servicio");

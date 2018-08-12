@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.pepe.tireapp.CambioNeuaticoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewPlacaCambio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+
+            android:text="La placa"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/categorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/textViewPlacaCambio">
+
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:text="#"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:id="@+id/michitext"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:id="@+id/enblanco1"
+                android:layout_toEndOf="@+id/michitext"
+                />
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:id="@+id/posicionA"
+                android:text="A"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_toEndOf="@+id/enblanco1"
+                />
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:id="@+id/posicionB"
+                android:text="B"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_toEndOf="@+id/posicionA"
+                />
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:id="@+id/blanco3"
+                android:layout_alignParentEnd="true"/>
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:id="@+id/enblanco2"
+                android:layout_toStartOf="@+id/blanco3"
+                />
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:id="@+id/posicionD"
+                android:text="D"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_toStartOf="@+id/enblanco2"
+                />
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:id="@+id/posicionC"
+                android:text="C"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_toStartOf="@+id/posicionD"
+                />
+        </RelativeLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/linearlayautBotones"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/img_camion_plano"
+            android:orientation="vertical"
+            android:layout_below="@+id/categorias">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/numeros"
+                        android:layout_width="50px"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:orientation="vertical"
+
+                        ></LinearLayout>
+                    <View
+                        android:layout_width="50px"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/blanco7"
+                        android:layout_toEndOf="@+id/numeros"
+                        ></View>
+                    <LinearLayout
+                        android:id="@+id/llBotonera1"
+                        android:layout_width="50px"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/blanco7"
+                        android:orientation="vertical"
+
+                        ></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llBotonera2"
+                        android:layout_width="50px"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/llBotonera1"
+                        android:orientation="vertical"
+
+                        ></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llBotonera3"
+                        android:layout_width="50px"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/llBotonera4"
+                        android:orientation="vertical"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llBotonera4"
+                        android:layout_width="50px"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/blanco9"
+                        android:orientation="vertical"></LinearLayout>
+                    <View
+                        android:layout_width="50px"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/blanco9"
+                        android:layout_toStartOf="@+id/blanco8"
+                        ></View>
+                    <View
+                        android:layout_width="50px"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/blanco8"
+                        android:layout_alignParentEnd="true"
+
+                        ></View>
+                </RelativeLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

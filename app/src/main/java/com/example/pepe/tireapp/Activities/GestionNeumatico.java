@@ -11,12 +11,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.pepe.tireapp.Gestion_Camion;
 import com.example.pepe.tireapp.MenuPrincipal;
 import com.example.pepe.tireapp.R;
 import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
+import com.example.pepe.tireapp.model.Camion;
 import com.example.pepe.tireapp.model.Grupoempresa;
 import com.example.pepe.tireapp.model.TipoNeumatico;
+import com.example.pepe.tireapp.repositories.CamionRepository;
+import com.example.pepe.tireapp.repositories.NeumaticoRepository;
 
 import java.util.ArrayList;
 
@@ -25,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class GestionNeumatico extends AppCompatActivity   {
+public class GestionNeumatico extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
 
 
     private Button button;
@@ -37,7 +41,38 @@ public class GestionNeumatico extends AppCompatActivity   {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_neumatico);
+        button=(Button) findViewById(R.id.btn_addneumatico);
 
+
+        declararvar();
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final TipoNeumatico tipoNeumatico = datosNuema();
+                ApiService service = ApiServiceGenerator.createService(ApiService.class);
+
+                Call call = service.createNeumatico(tipoNeumatico);
+
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onResponse(Call call, Response response) {
+                        Toast.makeText(GestionNeumatico.this,"REGISTRO EXITOSO", Toast.LENGTH_LONG).show();
+                        finish();
+                        NeumaticoRepository.registrarNeumatico(tipoNeumatico);
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+                        Toast.makeText(GestionNeumatico.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+    }
+
+    public void declararvar(){
         txt_dot=(EditText) findViewById(R.id.txtdot);
         txt_ancho=(EditText) findViewById(R.id.txt_ancho);
         txt_radial=(EditText) findViewById(R.id.txt_radial);
@@ -48,7 +83,6 @@ public class GestionNeumatico extends AppCompatActivity   {
         txt_pmin=(EditText) findViewById(R.id.txtpresionmi);
         txt_precio=(EditText) findViewById(R.id.txt_precio);
 
-        button=(Button) findViewById(R.id.btn_addneumatico);
 
         Spinner spinner = (Spinner) findViewById(R.id.marcaSpinner);
         Spinner spinner2 = (Spinner) findViewById(R.id.modeloSpinner);
@@ -64,7 +98,7 @@ public class GestionNeumatico extends AppCompatActivity   {
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id)
             {
 
-                        pin= (String) adapterView.getItemAtPosition(pos);
+                pin= (String) adapterView.getItemAtPosition(pos);
                 Toast.makeText(GestionNeumatico.this, pin, Toast.LENGTH_LONG).show();
 
             }
@@ -85,9 +119,28 @@ public class GestionNeumatico extends AppCompatActivity   {
             public void onNothingSelected(AdapterView<?> parent)
             {    }
         });
-    }
 
-    public void callRegisterNeumatico (View view) {
+
+
+    }
+    private TipoNeumatico datosNuema(){
+        TipoNeumatico tipoNeumatico=new TipoNeumatico();
+
+        tipoNeumatico.setDot(txt_dot.getText().toString());
+        tipoNeumatico.setAncho(Integer.parseInt(txt_ancho.getText().toString()));
+        tipoNeumatico.setRadial(txt_radial.getText().toString());
+        tipoNeumatico.setIndice_carga(txt_carga.getText().toString());
+        tipoNeumatico.setAltura_max(Double.parseDouble(txt_alt.getText().toString()));
+        tipoNeumatico.setTemperatura(Double.parseDouble(txt_tempera.getText().toString()));
+        tipoNeumatico.setPresion_max(Double.parseDouble(txt_pmax.getText().toString()));
+        tipoNeumatico.setPresion_min(Double.parseDouble(txt_pmin.getText().toString()));
+        tipoNeumatico.setPrecio(Double.parseDouble(txt_precio.getText().toString()));
+        tipoNeumatico.setMarca(pin);
+        tipoNeumatico.setModelo(pin2);
+
+        return tipoNeumatico;
+    }
+  /*  public void callRegisterNeumatico (View view) {
 
 
         try {
@@ -140,7 +193,18 @@ public class GestionNeumatico extends AppCompatActivity   {
 
 
     }
+*/
 
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
+    }
     public void CancelAdd(View paramView){
         Intent intent = new Intent(this, NeumaticoListActivity.class);
         startActivity(intent);

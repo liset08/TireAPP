@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by LISET on 08/08/2018.
  */
 
-public class Lectura  {
+public class Lectura implements Parcelable {
 
     @Override
     public String toString() {
@@ -192,4 +192,63 @@ public class Lectura  {
     }
 
 
-  }
+
+    protected Lectura(Parcel in) {
+        fecmod = in.readString();
+        usumod = in.readString();
+        fecreg = in.readString();
+        usureg = in.readString();
+        estado = in.readString();
+        observacion = in.readString();
+        Kilometraje_Neu = in.readDouble();
+        varianza = in.readDouble();
+        prom_desgaste = in.readDouble();
+        desgaste_3 = in.readDouble();
+        desgaste_2 = in.readDouble();
+        desgaste_1 = in.readDouble();
+        presion = in.readDouble();
+        NeumaticoID = in.readInt();
+        CamionID = in.readInt();
+        sesion = in.readInt();
+        LecturaID = in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(fecmod);
+        dest.writeString(usumod);
+        dest.writeString(fecreg);
+        dest.writeString(usureg);
+        dest.writeString(estado);
+        dest.writeString(observacion);
+        dest.writeDouble(Kilometraje_Neu);
+        dest.writeDouble(varianza);
+        dest.writeDouble(prom_desgaste);
+        dest.writeDouble(desgaste_3);
+        dest.writeDouble(desgaste_2);
+        dest.writeDouble(desgaste_1);
+        dest.writeDouble(presion);
+        dest.writeInt(NeumaticoID);
+        dest.writeInt(CamionID);
+        dest.writeInt(sesion);
+        dest.writeInt(LecturaID);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Lectura> CREATOR = new Parcelable.Creator<Lectura>() {
+        @Override
+        public Lectura createFromParcel(Parcel in) {
+            return new Lectura(in);
+        }
+
+        @Override
+        public Lectura[] newArray(int size) {
+            return new Lectura[size];
+        }
+    };
+}

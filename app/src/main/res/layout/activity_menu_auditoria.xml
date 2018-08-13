@@ -1,59 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.pepe.tireapp.Activities.MenuAuditoriaActivity">
+    tools:context="com.example.pepe.tireapp.BuscarNeumaticoxCamionActivity"
+    android:orientation="vertical"
+    android:id="@+id/FormIngreso"
+    android:paddingLeft="20.0dip"
+    android:paddingRight="20.0dip"
+    android:layout_width="300dp"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content"
+    android:layout_alignWithParentIfMissing="false"
+    android:layout_centerInParent="true">
 
-    <RelativeLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="Auditoría"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"/>
 
-        <LinearLayout
-            android:id="@+id/searchAuditorCamion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_alignParentTop="true"
-            >
-            <EditText
-                android:id="@+id/sviewFindCamionAuditor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Buscar por placa..."
-                >
+    <LinearLayout
+        android:id="@+id/LinearLayoutUsuario"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
 
-            </EditText>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_gravity="center_vertical"
+            android:layout_width="60px"
+            android:layout_height="80px"
+            android:layout_marginRight="10dp"
+            android:alpha="0.7"
+            android:layout_margin="10dp"
+            android:src="@drawable/ico_camion" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="#000000"
-                android:onClick="findCamionAuditor"
-                android:id="@+id/btnBuscarCamionAuditoria"
-                android:text="Buscar"
-
-                android:textColor="#ffffff" />
-        </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerviewCamionAuditor"
+        <EditText
+            android:id="@+id/sviewFindCamionAuditor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/searchAuditorCamion"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-
-            />
-
-
-    </RelativeLayout>
+            android:layout_gravity="center"
+            android:ems="18"
+            android:hint="Placa"
+            android:padding="10dp"
+            android:inputType="text"
+            android:textColor="@color/letra"
+            android:theme="@style/Theme.App.Edittext" />
 
 
-</android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnBuscarCamionAuditoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        />
+
+
+</LinearLayout>

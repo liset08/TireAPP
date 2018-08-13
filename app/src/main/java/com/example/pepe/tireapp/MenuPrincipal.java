@@ -84,23 +84,45 @@ public class MenuPrincipal extends AppCompatActivity {
                 // Do action by menu item id
                 switch (menuItem.getItemId()){
                     case R.id.nav_inicio:
-                        Intent intent = new Intent(MenuPrincipal.this, NeumaticoListActivity.class);
-                        startActivity(intent);
+                        if(UsuarioRepository.getUsuario().getRol().equals("Almacen")){
+                            Intent intent = new Intent(MenuPrincipal.this, NeumaticoListActivity.class);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(MenuPrincipal.this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case R.id.man_camion:
-                        Intent intent2 = new Intent(MenuPrincipal.this, MenuCamionActivity.class);
-                        startActivity(intent2);
+                        if(UsuarioRepository.getUsuario().getRol().equals("Supervisor")) {
+                            Intent intent2 = new Intent(MenuPrincipal.this, MenuCamionActivity.class);
+                            startActivity(intent2);
+                        }else{
+                            Toast.makeText(MenuPrincipal.this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case R.id.intro_medidas:
-                        /*Intent intent3 = new Intent(MenuPrincipal.this, ControLLantasActivity.class);
-                        startActivity(intent3);*/
+                        if(UsuarioRepository.getUsuario().getRol().equals("Mecanico") || UsuarioRepository.getUsuario().getRol().equals("Supervisor")){
+                            Intent intent3 = new Intent(MenuPrincipal.this, AddActivity.class);
+                            startActivity(intent3);
+                        }else{
+                            Toast.makeText(MenuPrincipal.this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case R.id.cambio_y_rota:
+                        if(UsuarioRepository.getUsuario().getRol().equals("Mecanico") || UsuarioRepository.getUsuario().getRol().equals("Supervisor")){
+                            Intent intent4 = new Intent(MenuPrincipal.this, CambioSearchActivity.class);
+                            startActivity(intent4);
+                        }else{
+                            Toast.makeText(MenuPrincipal.this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case R.id.auditoria:
-                        Intent intent5 = new Intent(MenuPrincipal.this, MenuAuditoriaActivity.class);
-                        intent5.putExtra("tipogestion" , "auditor");
-                        startActivity(intent5);
+                        if(UsuarioRepository.getUsuario().getRol().equals("Supervisor")){
+                            Intent intent5 = new Intent(MenuPrincipal.this, MenuAuditoriaActivity.class);
+                            intent5.putExtra("tipogestion" , "auditor");
+                            startActivity(intent5);
+                        }else{
+                            Toast.makeText(MenuPrincipal.this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case R.id.nav_logout:
                         new AlertDialog.Builder(MenuPrincipal.this)
@@ -149,27 +171,45 @@ public class MenuPrincipal extends AppCompatActivity {
 
     public void GestionCamion(View paramView){
 
-        Intent intent = new Intent(this, MenuCamionActivity.class);
-        startActivity(intent);
+        if(UsuarioRepository.getUsuario().getRol().equals("Supervisor")) {
+            Intent intent = new Intent(this, MenuCamionActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+        }
 
     }
     public void GestionCambio(View paramView){
 
-        Intent intent = new Intent(this, CambioSearchActivity.class);
-        startActivity(intent);
+        if(UsuarioRepository.getUsuario().getRol().equals("Mecanico") || UsuarioRepository.getUsuario().getRol().equals("Supervisor")){
+            Intent intent = new Intent(this, CambioSearchActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
     public void GestionLlanta(View paramView){
-        Intent intent = new Intent(this, NeumaticoListActivity.class);
-        startActivity(intent);
+
+        if(UsuarioRepository.getUsuario().getRol().equals("Almacen")){
+            Intent intent = new Intent(this, NeumaticoListActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
 
     public void Medida(View paramView){
-        Intent intent = new Intent(this, AddActivity.class);
-        startActivity(intent);
+        if(UsuarioRepository.getUsuario().getRol().equals("Mecanico") || UsuarioRepository.getUsuario().getRol().equals("Supervisor")){
+            Intent intent = new Intent(this, AddActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -200,9 +240,14 @@ public class MenuPrincipal extends AppCompatActivity {
     }
 
     public void GestionAuditoria(View view){
-        Intent intent = new Intent(this, MenuAuditoriaActivity.class);
-        intent.putExtra("tipogestion" , "auditor");
-        startActivity(intent);
+
+        if(UsuarioRepository.getUsuario().getRol().equals("Supervisor")){
+            Intent intent = new Intent(this, MenuAuditoriaActivity.class);
+            intent.putExtra("tipogestion" , "auditor");
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,"No cuenta con privilegios para esta acción", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

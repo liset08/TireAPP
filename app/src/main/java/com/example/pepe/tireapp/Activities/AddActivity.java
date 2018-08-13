@@ -38,7 +38,7 @@ public class AddActivity extends AppCompatActivity {
     }
 
 
-    public void findCamion(View view){
+    public void findCamionLectura(View view){
 
         String buscar = editesatdo.getText().toString();
 

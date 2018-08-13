@@ -10,7 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.pepe.tireapp.Gestion_Camion"
     android:verticalScrollbarPosition="right">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,6 +33,7 @@
             android:textColor="@color/negro"
             android:textSize="18sp"
             android:textStyle="bold" />
+
 
         <AutoCompleteTextView
             android:id="@+id/editTextTag"
@@ -195,20 +198,23 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
+
             android:layout_marginBottom="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:orientation="horizontal">
 
+
             <Button
                 android:id="@+id/buttomAgregar"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_weight="1"
                 android:layout_gravity="left"
                 android:layout_marginBottom="36dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginStart="15dp"
+
                 android:background="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"
                 android:paddingLeft="10dp"
@@ -219,25 +225,13 @@
                 android:textStyle="normal" />
 
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="36dp"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="10dp"
-                android:layout_marginEnd="25dp"
-                android:background="@color/cardview_dark_background"
 
-                android:paddingRight="10dp"
-                android:text="Modificar"
-                android:textColor="@color/abs__background_holo_light"
-                android:textStyle="normal" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
+                android:layout_weight="1"
                 android:background="@color/cardview_dark_background"
 
                 android:layout_marginBottom="36dp"
@@ -247,9 +241,10 @@
                 android:text="Cancelar"
                 android:textColor="@color/abs__background_holo_light"
                 android:textStyle="normal" />
+
         </LinearLayout>
 
     </LinearLayout>
 
-
+</ScrollView>
 </RelativeLayout>

@@ -6,6 +6,7 @@ import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
 import com.example.pepe.tireapp.adapters.CamionListAdpater;
 import com.example.pepe.tireapp.model.Camion;
+import com.example.pepe.tireapp.repositories.CamionRepository;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -39,21 +40,37 @@ public class MenuAuditoriaActivity extends AppCompatActivity {
         editTextCamionplaca = findViewById(R.id.sviewFindCamionAuditor);
         buscarCamionAuditor = findViewById(R.id.btnBuscarCamionAuditoria);
 
-        camionList = findViewById(R.id.recyclerviewCamionAuditor);
-        camionList.setLayoutManager(new LinearLayoutManager(this));
-        camionList.setAdapter(new CamionListAdpater(this));
 
-        initialize();
 
         buscarCamionAuditor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findCamionAuditor();
+                buscarCamion();
             }
         });
 
     }
 
+    public void buscarCamion(){
+        String buscar = editTextCamionplaca.getText().toString();
+
+        Camion camion = CamionRepository.buscarCamionbyPlaca(buscar);
+
+        if(camion == null){
+            Toast.makeText(MenuAuditoriaActivity.this, "Camión no encontrado", Toast.LENGTH_LONG).show();
+        }else{
+            int idPlaca = camion.getCamion_ID();
+            String placa = camion.getPlaca();
+            int ejes = camion.getEjes();
+            Intent intent = new Intent(MenuAuditoriaActivity.this, AuditoriaInfCamionActivity.class);
+            intent.putExtra("placa",  placa);
+            intent.putExtra("ejes" , ejes);
+            intent.putExtra("idPlaca" , idPlaca);
+            startActivity(intent);
+        }
+    }
+
+    /*
     private void findCamionAuditor(){
 
         String buscar = editTextCamionplaca.getText().toString();
@@ -106,56 +123,7 @@ public class MenuAuditoriaActivity extends AppCompatActivity {
 
     }
 
-
-    private RecyclerView camionList;
-
-    private void initialize() {
-
-        ApiService service = ApiServiceGenerator.createService(ApiService.class);
-
-        Call<List<Camion>> call = service.getCamiones();
-
-        call.enqueue(new Callback<List<Camion>>() {
-            @Override
-            public void onResponse(Call<List<Camion>> call, Response<List<Camion>> response) {
-                try {
-
-                    int statusCode = response.code();
-                    Log.d(TAG, "HTTP status code: " + statusCode);
-
-                    if (response.isSuccessful()) {
-
-                        List<Camion> camiones = response.body();
-                        Log.d(TAG, "camiones: " + camiones);
-                        Collections.reverse(camiones);
-
-                        CamionListAdpater adapter = (CamionListAdpater) camionList.getAdapter();
-                        adapter.setCamiones(camiones);
-                        adapter.notifyDataSetChanged();
-
-                    } else {
-                        Log.e(TAG, "onError: " + response.errorBody().string());
-                        throw new Exception("Error en el servicio");
-                    }
-
-                } catch (Throwable t) {
-                    try {
-                        Log.e(TAG, "onThrowable: " + t.toString(), t);
-                        Toast.makeText(MenuAuditoriaActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                    }catch (Throwable x){}
-                }
-            }
-
-
-
-            @Override
-            public void onFailure(Call<List<Camion>> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.toString());
-                Toast.makeText(MenuAuditoriaActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-
-        });
-    }
+*/
 
 
 

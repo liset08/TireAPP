@@ -16,6 +16,7 @@ import com.example.pepe.tireapp.Service.ApiService;
 import com.example.pepe.tireapp.Service.ApiServiceGenerator;
 import com.example.pepe.tireapp.model.Camion;
 import com.example.pepe.tireapp.repositories.CamionRepository;
+import com.example.pepe.tireapp.repositories.UsuarioRepository;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -44,25 +45,30 @@ public class Gestion_Camion extends AppCompatActivity implements AdapterView.OnI
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Camion camion = dataNewCamion();
 
-                ApiService api = ApiServiceGenerator.createService(ApiService.class);
+                if(dataNewCamion()==null){
+                    Toast.makeText(Gestion_Camion.this, "Complete todos los campos" , Toast.LENGTH_LONG).show();
+                }else {
+                    final Camion camion = dataNewCamion();
 
-                Call call = api.create(camion);
+                    ApiService api = ApiServiceGenerator.createService(ApiService.class);
 
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onResponse(Call call, Response response) {
-                        Toast.makeText(Gestion_Camion.this,"REGISTRO EXITOSO", Toast.LENGTH_LONG).show();
-                        finish();
-                        CamionRepository.añadirCamion(camion);
-                    }
+                    Call call = api.create(camion);
 
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-                        Toast.makeText(Gestion_Camion.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            Toast.makeText(Gestion_Camion.this, "REGISTRO EXITOSO", Toast.LENGTH_LONG).show();
+                            finish();
+                            CamionRepository.añadirCamion(camion);
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            Toast.makeText(Gestion_Camion.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
 
@@ -71,20 +77,30 @@ public class Gestion_Camion extends AppCompatActivity implements AdapterView.OnI
     }
 
     private Camion dataNewCamion(){
-        Camion camion = new Camion();
-        camion.setTag(ettag.getText().toString());
-        camion.setPlaca(etplaca.getText().toString());
-        camion.setModelo(etmodelo.getText().toString());
-        camion.setMarca(etmarca.getText().toString());
-        camion.setKilometraje(Double.parseDouble(etkilometraje.getText().toString()));
-        camion.setEjes(Integer.parseInt(etnejes.getText().toString()));
-        camion.setCarga_neta(Double.parseDouble(etpneto.getText().toString()));
-        camion.setCarga_util(Double.parseDouble(etpbruto.getText().toString()));
-        camion.setEstado("1");
-        camion.setUsureg("Jordan");
-        camion.setFecreg(obtenerFechaActual());
-        camion.setNum_llantas(this.calcularNLlantas(camion.getEjes()));
-        return camion;
+
+        if(     ettag.getText().toString().isEmpty() || etplaca.getText().toString().isEmpty() ||
+                etmodelo.getText().toString().isEmpty() || etmarca.getText().toString().isEmpty() ||
+                etkilometraje.getText().toString().isEmpty() || etnejes.getText().toString().isEmpty()||
+                etpneto.getText().toString().isEmpty() ||   etpbruto.getText().toString().isEmpty()){
+
+            return null;
+        }
+        else{
+            Camion camion = new Camion();
+            camion.setTag(ettag.getText().toString());
+            camion.setPlaca(etplaca.getText().toString());
+            camion.setModelo(etmodelo.getText().toString());
+            camion.setMarca(etmarca.getText().toString());
+            camion.setKilometraje(Double.parseDouble(etkilometraje.getText().toString()));
+            camion.setEjes(Integer.parseInt(etnejes.getText().toString()));
+            camion.setCarga_neta(Double.parseDouble(etpneto.getText().toString()));
+            camion.setCarga_util(Double.parseDouble(etpbruto.getText().toString()));
+            camion.setEstado("1");
+            camion.setUsureg(UsuarioRepository.getUsuario().getUsername());
+            camion.setFecreg(obtenerFechaActual());
+            camion.setNum_llantas(this.calcularNLlantas(camion.getEjes()));
+            return camion;
+        }
     }
 
     private void inicialiteComponents(){
@@ -107,6 +123,7 @@ public class Gestion_Camion extends AppCompatActivity implements AdapterView.OnI
 
     public String obtenerFechaActual(){
 
+        //formato necesario para el datetime de sqlServer
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(Calendar.getInstance().getTime());
         return timeStamp;
     }

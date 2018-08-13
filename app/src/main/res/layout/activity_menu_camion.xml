@@ -24,10 +24,15 @@
             android:id="@+id/sviewFindCamion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
+            android:padding="10dp"
             android:layout_weight="1"
-            android:hint="Buscar por placa...">
+            android:hint="Buscar por placa..."
+            android:theme="@style/Theme.App.Edittext"
+            android:ems="18"
+            />
 
-        </EditText>
+
 
         <Button
             android:layout_width="match_parent"

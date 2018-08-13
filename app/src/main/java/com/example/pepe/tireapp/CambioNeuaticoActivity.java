@@ -37,14 +37,11 @@ public class CambioNeuaticoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambio_neuatico);
-
         textViewPlaca = findViewById(R.id.textViewPlacaCambio);
         placa = getIntent().getExtras().getString("placa");
         ejes = getIntent().getExtras().getInt("ejes");
         idPlaca = getIntent().getExtras().getInt("idPlaca");
-
         textViewPlaca.setText(placa);
-
         LinearLayout llBotonera1 = (LinearLayout) findViewById(R.id.llBotonera1);
         LinearLayout llBotonera2 = (LinearLayout) findViewById(R.id.llBotonera2);
         LinearLayout llBotonera3 = (LinearLayout) findViewById(R.id.llBotonera3);
@@ -54,16 +51,13 @@ public class CambioNeuaticoActivity extends AppCompatActivity {
         int buble = numEjes + 1;
         //Creamos las propiedades de layout que tendrán los botones.
         //Son LinearLayout.LayoutParams porque los botones van a estar en un LinearLayout.
-
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(50,
                 100);
         LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(50,
                 50);
-
         int k = 0;
         //Creamos los marcadores que indican la posición de la llanta en el eje Y
         for (int i = 1; i <= buble; i++) {
-
             //el if cuando i sea 2 solo añadirá un espacio en blanco para diferenciar
             //el primer eje de los demas
             if (i == 2) {
@@ -84,11 +78,9 @@ public class CambioNeuaticoActivity extends AppCompatActivity {
             if (k == numEjes)
                 k = 0;
         }
-
         //Creamos los botones en bucle
         //Posicion A
         for (int i = 1; i <= buble; i++) {
-
             if (i == 2) {
                 View view = new View(this);
                 view.setLayoutParams(lp2);
@@ -97,91 +89,73 @@ public class CambioNeuaticoActivity extends AppCompatActivity {
                 k = i;
                 if (i > 2)
                     k = i - 1;
-                Button button = new Button(this);
+                final Button button = new Button(this);
                 button.setLayoutParams(lp);
                 button.setBackgroundResource(R.drawable.neumatico);
                 final int s = k;
                 final String d = "A"+k;
                 final List<Camion_neumaticos> camiones = CamionNeumaticRepository.getList(idPlaca);
-
                 if(this.verificarExistenciaNeumatico(d,camiones)){
+                    button.setBackgroundResource(R.drawable.neumaticowarning);
                     Camion_neumaticos caneu = CamionNeumaticRepository.buscarneumati(d);
                     final int idneu = caneu.getNeumatico_id();
                     final String id=caneu.getEstadouso();
                     Log.d(TAG, "camion: " + caneu);
-
                     final Lectura lectura = LecturaRepository.buscarlectura(d);
                     final String codAviso=lectura.getEstado();
+                    if(codAviso.equalsIgnoreCase("")){
+                        button.setBackgroundResource(R.drawable.neumaticogood);
+                    }
                     Log.d(TAG, "camion: " + lectura);
-
-
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                if(codAviso.equalsIgnoreCase("A3")){
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                    builder.setTitle("Advertencia...!!");
-                    builder.setIcon(R.drawable.icon_waning);
-
-                    builder.setMessage("Cambio de neumatico presion baja y demasiado desgaste");
-                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            ApiService service = ApiServiceGenerator.createService(ApiService.class);
-
-                            Call<Void> call = service.deleteCamNeu(idneu);
-
-                            call.enqueue(new Callback() {
-                                @Override
-                                public void onResponse(Call call, Response response) {
-                                    if (response.isSuccessful()){
-
-                                     finish();
-
+                            if(codAviso.equalsIgnoreCase("A3")){
+                                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                                builder.setTitle("Advertencia...!!");
+                                builder.setIcon(R.drawable.icon_waning);
+                                builder.setMessage("Cambio de neumatico presion baja y demasiado desgaste");
+                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        ApiService service = ApiServiceGenerator.createService(ApiService.class);
+                                        Call<Void> call = service.deleteCamNeu(idneu);
+                                        call.enqueue(new Callback() {
+                                            @Override
+                                            public void onResponse(Call call, Response response) {
+                                                if (response.isSuccessful()){
+                                                    finish();
+                                                }
+                                            }
+                                            @Override
+                                            public void onFailure(Call call, Throwable t) {
+                                            }
+                                        });
+                                        //
                                     }
-                                }
-
-                                @Override
-                                public void onFailure(Call call, Throwable t) {
-
-                                }
-                            });
-
-//
-                        }
-                    });
-                    builder.create().show();
-
-}else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                    builder.setTitle("Advertencia...!!");
-                    builder.setIcon(R.drawable.icon_waning);
-
-                    builder.setMessage("No necesita realizar cambio de neumatico");
-                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-
-//
-                        }
-                    });
-                    builder.create().show();
-
-                }
-
+                                });
+                                builder.create().show();
+                            }else{
+                                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                                builder.setTitle("Advertencia...!!");
+                                builder.setIcon(R.drawable.icon_waning);
+                                builder.setMessage("No necesita realizar cambio de neumatico");
+                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //
+                                    }
+                                });
+                                builder.create().show();
+                            }
                         }
                     });}else{
-
                 }
                 llBotonera1.addView(button);
             }
             if (k == numEjes)
                 k = 0;
         }
-
         //Posicion B
         for (int i = 1; i <= buble; i++) {
             if (i == 2) {
@@ -196,68 +170,57 @@ public class CambioNeuaticoActivity extends AppCompatActivity {
                 k = i;
                 if (i > 2)
                     k = i - 1;
-                Button button = new Button(this);
+                final Button button = new Button(this);
                 button.setLayoutParams(lp);
                 button.setBackgroundResource(R.drawable.neumatico);
-
                 final int s = k;
                 String d = "B"+k;
                 List<Camion_neumaticos> camiones = CamionNeumaticRepository.getList(idPlaca);
                 if(this.verificarExistenciaNeumatico(d,camiones)){
+                    button.setBackgroundResource(R.drawable.neumaticowarning);
                     Camion_neumaticos caneu = CamionNeumaticRepository.buscarneumati(d);
                     final int idneu = caneu.getNeumatico_id();
-
                     final Lectura lectura = LecturaRepository.buscarlectura(d);
                     final String codAviso=lectura.getEstado();
-
+                    if(codAviso.equalsIgnoreCase("")){
+                        button.setBackgroundResource(R.drawable.neumaticogood);
+                    }
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if(codAviso.equalsIgnoreCase("A3")){
-
                                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                                 builder.setTitle("Advertencia...!!");
                                 builder.setIcon(R.drawable.icon_waning);
-
                                 builder.setMessage("Cambio de neumatico presion baja y demasiado desgaste");
                                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
-
-//
+                                        //
                                     }
                                 });
                                 builder.create().show();
-
                             }else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                                 builder.setTitle("Advertencia...!!");
                                 builder.setIcon(R.drawable.icon_waning);
-
                                 builder.setMessage("No necesita realizar cambio de neumatico");
                                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
-
-//
+                                        //
                                     }
                                 });
                                 builder.create().show();
-
                             }
-
                         }
                     });}else{
-
                 }
                 llBotonera2.addView(button);
             }
             if (k == numEjes)
                 k = 0;
         }
-
         //Posicion C
         for (int i = 1; i <= buble; i++) {
             if (i == 2) {
@@ -272,68 +235,57 @@ public class CambioNeuaticoActivity extends AppCompatActivity {
                 k = i;
                 if (i > 2)
                     k = i - 1;
-                Button button = new Button(this);
+                final Button button = new Button(this);
                 button.setLayoutParams(lp);
                 button.setBackgroundResource(R.drawable.neumatico);
                 final int s = k; String d = "C"+k;
                 List<Camion_neumaticos> camiones = CamionNeumaticRepository.getList(idPlaca);
                 if(this.verificarExistenciaNeumatico(d,camiones)){
+                    button.setBackgroundResource(R.drawable.neumatico);
                     Camion_neumaticos caneu = CamionNeumaticRepository.buscarneumati(d);
                     final int idneu = caneu.getNeumatico_id();
-
                     final Lectura lectura = LecturaRepository.buscarlectura(d);
                     Log.d(TAG, "producto: " + lectura);
                     final String codAviso=lectura.getEstado();
-
-
+                    if(codAviso.equalsIgnoreCase("")){
+                        button.setBackgroundResource(R.drawable.neumaticogood);
+                    }
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if(codAviso.equalsIgnoreCase("A3")){
-
                                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                                 builder.setTitle("Advertencia...!!");
                                 builder.setIcon(R.drawable.icon_waning);
-
                                 builder.setMessage("Cambio de neumatico presion baja y demasiado desgaste");
                                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
-
-//
+                                        //
                                     }
                                 });
                                 builder.create().show();
-
                             }else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                                 builder.setTitle("Advertencia...!!");
                                 builder.setIcon(R.drawable.icon_waning);
-
                                 builder.setMessage("No necesita realizar cambio de neumatico");
                                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
-
-//
+                                        //
                                     }
                                 });
                                 builder.create().show();
-
                             }
-
                         }
                     });}else{
-
                 }
                 llBotonera3.addView(button);
             }
             if (k == numEjes)
                 k = 0;
         }
-
         //Posicion D
         for (int i = 1; i <= buble; i++) {
             if (i == 2) {
@@ -344,56 +296,49 @@ public class CambioNeuaticoActivity extends AppCompatActivity {
                 k = i;
                 if (i > 2)
                     k = i - 1;
-                Button button = new Button(this);
+                final Button button = new Button(this);
                 button.setLayoutParams(lp);
                 button.setBackgroundResource(R.drawable.neumatico);
                 final int s = k;
                 String d = "D"+k;
                 List<Camion_neumaticos> camiones = CamionNeumaticRepository.getList(idPlaca);
                 if(this.verificarExistenciaNeumatico(d,camiones)){
+                    button.setBackgroundResource(R.drawable.neumaticowarning);
                     Camion_neumaticos caneu = CamionNeumaticRepository.buscarneumati(d);
                     final int idneu = caneu.getNeumatico_id();
-
                     final Lectura lectura = LecturaRepository.buscarlectura(d);
                     Log.d(TAG, "producto: " + lectura);
                     final String codAviso=lectura.getEstado();
-
+                    if(codAviso.equalsIgnoreCase("")){
+                        button.setBackgroundResource(R.drawable.neumaticogood);
+                    }
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if(codAviso.equalsIgnoreCase("A3")){
-
                                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                                 builder.setTitle("Advertencia...!!");
                                 builder.setIcon(R.drawable.icon_waning);
-
                                 builder.setMessage("Cambio de neumatico presion baja y demasiado desgaste");
                                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
-
-//
+                                        //
                                     }
                                 });
                                 builder.create().show();
-
                             }else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                                 builder.setTitle("Advertencia...!!");
                                 builder.setIcon(R.drawable.icon_waning);
-
                                 builder.setMessage("No necesita realizar cambio de neumatico");
                                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
-
-//
+                                        //
                                     }
                                 });
                                 builder.create().show();
-
                             }
                         }
                     });
@@ -404,26 +349,20 @@ public class CambioNeuaticoActivity extends AppCompatActivity {
         if (k == numEjes)
             k = 0;
     }
-
-
-
     public boolean verificarExistenciaNeumatico(String posicion , List<Camion_neumaticos> camion_neumaticos){
         boolean seraVerdad = false;
         for(int i = 0 ; i < camion_neumaticos.size(); i++){
             if(camion_neumaticos.get(i).getPosicion().equals(posicion))
                 seraVerdad = true;
         }
-
         return seraVerdad;
     }
-
     public boolean verificarExistenciaLectura(String posicion , List<Lectura> lecturas){
         boolean seraVerdad = false;
         for(int i = 0 ; i < lecturas.size(); i++){
             if(lecturas.get(i).getUsureg().equals(posicion))
                 seraVerdad = true;
         }
-
         return seraVerdad;
     }
 }

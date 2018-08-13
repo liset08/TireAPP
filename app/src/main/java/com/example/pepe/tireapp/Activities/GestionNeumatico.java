@@ -49,24 +49,29 @@ public class GestionNeumatico extends AppCompatActivity implements AdapterView.O
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final TipoNeumatico tipoNeumatico = datosNuema();
-                ApiService service = ApiServiceGenerator.createService(ApiService.class);
 
-                Call call = service.createNeumatico(tipoNeumatico);
+                if(datosNuema()== null){
+                    Toast.makeText(GestionNeumatico.this,"Complete todos los campos", Toast.LENGTH_LONG).show();
+                }else{
+                    final TipoNeumatico tipoNeumatico = datosNuema();
+                    ApiService service = ApiServiceGenerator.createService(ApiService.class);
 
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onResponse(Call call, Response response) {
-                        Toast.makeText(GestionNeumatico.this,"REGISTRO EXITOSO", Toast.LENGTH_LONG).show();
-                        finish();
-                        NeumaticoRepository.registrarNeumatico(tipoNeumatico);
-                    }
+                    Call call = service.createNeumatico(tipoNeumatico);
 
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-                        Toast.makeText(GestionNeumatico.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onResponse(Call call, Response response) {
+                            Toast.makeText(GestionNeumatico.this,"REGISTRO EXITOSO", Toast.LENGTH_LONG).show();
+                            finish();
+                            NeumaticoRepository.registrarNeumatico(tipoNeumatico);
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            Toast.makeText(GestionNeumatico.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
 
             }
         });
@@ -124,6 +129,15 @@ public class GestionNeumatico extends AppCompatActivity implements AdapterView.O
 
     }
     private TipoNeumatico datosNuema(){
+
+        if(     txt_dot.getText().toString().isEmpty() || txt_ancho.getText().toString().isEmpty() ||
+                txt_radial.getText().toString().isEmpty() || txt_carga.getText().toString().isEmpty() ||
+                txt_alt.getText().toString().isEmpty() || txt_tempera.getText().toString().isEmpty() ||
+                txt_pmax.getText().toString().isEmpty() || txt_pmin.getText().toString().isEmpty() ||
+                txt_precio.getText().toString().isEmpty()){
+
+            return null;
+        }else{
         TipoNeumatico tipoNeumatico=new TipoNeumatico();
 
         tipoNeumatico.setDot(txt_dot.getText().toString());
@@ -139,6 +153,7 @@ public class GestionNeumatico extends AppCompatActivity implements AdapterView.O
         tipoNeumatico.setModelo(pin2);
 
         return tipoNeumatico;
+        }
     }
   /*  public void callRegisterNeumatico (View view) {
 
@@ -206,8 +221,7 @@ public class GestionNeumatico extends AppCompatActivity implements AdapterView.O
         // TODO Auto-generated method stub
     }
     public void CancelAdd(View paramView){
-        Intent intent = new Intent(this, NeumaticoListActivity.class);
-        startActivity(intent);
+        finish();
 
     }
    }

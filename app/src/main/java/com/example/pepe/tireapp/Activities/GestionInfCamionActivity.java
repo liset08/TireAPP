@@ -18,11 +18,7 @@ import java.util.List;
 public class GestionInfCamionActivity extends AppCompatActivity {
 
 
-    LinearLayout llBotonera1;
-    LinearLayout llBotonera2;
-    LinearLayout llBotonera3;
-    LinearLayout llBotonera4;
-    LinearLayout numeros;
+
     private static final int REGISTER_FORM_REQUEST = 100;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -32,6 +28,11 @@ public class GestionInfCamionActivity extends AppCompatActivity {
         }
     }
 
+    LinearLayout llBotonera1;
+    LinearLayout llBotonera2;
+    LinearLayout llBotonera3;
+    LinearLayout llBotonera4;
+    LinearLayout numeros;
 
     private TextView textViewPlaca;
 

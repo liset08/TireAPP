@@ -36,7 +36,7 @@ public class LecturaActivity extends AppCompatActivity {
     private static final String TAG = LecturaActivity.class.getSimpleName();
     private EditText txt_des1_lec,txt_des2_lec,txt_des3_lec,txt_pllan_le,txt_pres_lec,txt_obse_le,txt_taviso_lec,txt_placa_lec;
     private static final int REGISTER_FORM_REQUEST = 100;
-    Button btn_add_lec;
+    Button btn_add_lec, btnCancelar;
     public double presion,d1,d2,d3,promdesgaste;
     public String obser,aviso;
     String placa;
@@ -52,6 +52,7 @@ public int ejes;
         txt_placa_lec=(EditText)findViewById(R.id.txt_pla_lec);
         txt_pllan_le=(EditText) findViewById(R.id.txt_pllan_le);
         btn_add_lec=(Button) findViewById(R.id.btn_add_lec);
+        btnCancelar = findViewById(R.id.btnCancelarLectura);
 
         txt_des1_lec=(EditText) findViewById(R.id.txt_des1_lec);
         txt_des2_lec=(EditText) findViewById(R.id.txt_des2_lec);
@@ -71,6 +72,14 @@ public int ejes;
 
         txt_placa_lec.setText(placa);
         txt_pllan_le.setText(posicion);
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         btn_add_lec.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +179,7 @@ public int ejes;
         lectura.setKilometraje_Neu(13);
         lectura.setEstado(aviso);
         lectura.setVarianza(13.3);
+        lectura.setFecreg(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(Calendar.getInstance().getTime()));
 
         return lectura;
     }

@@ -46,4 +46,21 @@ public class LecturaRepository {
 
     }
 
+    public static Lectura buscarLecturabyCamion(String posicion, int idCamion){
+
+        List<Lectura> lecturas = getList(idCamion);
+        Lectura lectura = null;
+
+        if(lecturas.isEmpty()){
+            return  null;
+        }else{
+            for(int i = 0; i < lecturas.size();i++){
+                if(lecturas.get(i).getUsureg().equals(posicion)){
+                    lectura =  lecturas.get(i);
+                }
+            }
+            return lectura;
+        }
+    }
+
 }
